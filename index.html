@@ -1961,24 +1961,31 @@
             opacity: 0.45;
         }
 
-        /* :not(.section-eyebrow) để chữ "Thank you" trên tiêu đề không bị quy tắc này
-           vợt trúng - nếu không nó cũng bị căn hai lề nên lệch hẳn sang trái, lại bị ép
-           nhỏ bằng cỡ chữ đoạn văn. */
-        .thank-you p:not(.section-eyebrow) {
+        /* Cố ý KHÔNG dùng :not() ở đây. Thêm :not() làm quy tắc này nặng hơn hai quy tắc
+           bên dưới, thế là nó giành luôn màu và cỡ chữ của dòng chúc tiếng Anh. Cứ để nó
+           nhẹ, rồi cho chữ "Thank you" và dòng chúc tự ghi đè phần của mình. */
+        .thank-you p {
             max-width: 620px;
             margin: 18px auto 0;
             color: var(--ink-soft);
             font-size: 1.03rem;
             line-height: 1.85;
-        }
-
-        /* Chỉ đoạn lời cảm ơn tiếng Việt mới căn hai lề. Loại luôn .wish ở đây thay vì
-           để nó tự ghi đè, vì :not() làm quy tắc này "nặng" hơn quy tắc căn giữa của
-           dòng chúc tiếng Anh nên dòng đó sẽ bị kéo lệch sang trái. */
-        .thank-you p:not(.section-eyebrow):not(.wish) {
             text-align: justify;
             text-justify: inter-word;
             hyphens: auto;
+        }
+
+        /* Chữ "Thank you" trên tiêu đề cũng là thẻ <p> nên bị quy tắc trên vợt trúng:
+           dòng ngắn mà căn hai lề thì dạt sang trái, lại bị ép nhỏ bằng cỡ chữ đoạn văn.
+           Trả lại đúng cỡ và căn giữa. */
+        .thank-you .section-eyebrow {
+            max-width: none;
+            margin: 0;
+            font-size: 1.5rem;
+            line-height: 1.3;
+            color: var(--sun-600);
+            text-align: center;
+            hyphens: none;
         }
 
         /* Trái tim ngăn giữa lời cảm ơn tiếng Việt và dòng chúc tiếng Anh.
@@ -2281,8 +2288,10 @@
             <section id="greeting">
                 <div class="greeting-card reveal">
                         <h3>Thân mời <span id="display-guest-name" class="guest-name"></span>,</h3>
-                        <p>Thời gian trôi qua nhanh như một cái chớp mắt, vậy là chặng đường bốn năm dưới mái trường Đại
-                        học Bách khoa của mình đã đi tới trạm dừng chân cuối cùng. 
+                        <p>
+                               Thời gian trôi qua nhanh như một cái chớp mắt, vậy là chặng đường bốn năm dưới mái trường
+                        Đại
+                        học Bách khoa Hà Nội của mình đã đi tới trạm dừng chân cuối cùng. 
                             </p>
                         <p>
                                 Bách khoa trong mình không chỉ có giảng đường thênh thang, có những đêm ôn thi đến
@@ -2294,12 +2303,10 @@
                         trò giải tỏa áp lực, hành trình này của mình chắc chắn sẽ không thể trọn vẹn và ý nghĩa đến thế.
                             </p>
                         <p>
-                                Lễ tốt nghiệp sắp tới đây là một dấu mốc quan trọng, khép lại thời sinh viên còn
-                        nhiều vô tư và mở ra một chân trời mới. Trong khoảnh khắc đặc biệt này, sự hiện
-                        diện của bạn sẽ là món quà vô giá và niềm hạnh phúc lớn lao đối với mình.
-                            </p>
-                        <p>
-                                Rất mong được đón bạn tại buổi lễ để cùng lưu lại những khoảnh khắc đáng nhớ!
+                                Lễ tốt nghiệp sắp tới đây là một dấu mốc quan trọng, khép lại thời sinh viên và mở ra
+                        một chặng đường mới. Trong khoảnh khắc đặc biệt này, sự hiện
+                        diện của bạn sẽ là món quà vô giá và niềm hạnh phúc lớn lao đối với mình. Rất mong được đón tiếp
+                        bạn sau buổi lễ để cùng nhau lưu lại những khoảnh khắc đáng nhớ!
                             </p>
                 </div>
             </section>
