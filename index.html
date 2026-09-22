@@ -24,7 +24,6 @@
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="vi_VN">
     <meta name="twitter:card" content="summary_large_image">
-
     <link rel="icon" href="seal-hust.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -796,11 +795,16 @@
             font-size: 1.25em;
         }
 
+        /* Lời mời căn đều hai lề cho thẳng thớm như thư viết tay.
+           hyphens: auto để tiếng Việt không bị giãn chữ quá rộng ở dòng ngắn. */
         .greeting-card p {
             margin-top: 12px;
             color: var(--ink-soft);
             font-size: 1rem;
             line-height: 1.75;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
         }
 
         /* ============================= */
@@ -1839,12 +1843,21 @@
         /* Tên ảnh nằm trong dải trắng dưới ảnh (kiểu ảnh polaroid). Trước đây dùng
            position:absolute nên nó bám theo khối .reveal - khối này chỉ bọc đúng phần
            ảnh - thành ra chữ rơi vào trong ảnh. */
+        /* Chừa sẵn chỗ cho 2 dòng: tiêu đề 1 dòng thì nằm chính giữa khoảng đó, tiêu đề
+           2 dòng thì vừa khít - nhờ vậy các tấm ảnh cao bằng nhau.
+           text-wrap: balance để chỗ ngắt dòng chia đều hai dòng, không bị dòng trên dài
+           dòng dưới thừa một hai chữ. */
         .gallery-caption {
             margin-top: 12px;
+            min-height: calc(1.22rem * 1.35 * 2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            text-wrap: balance;
             font-family: var(--font-script);
             font-size: 1.22rem;
-            line-height: 1.3;
+            line-height: 1.35;
             color: var(--ink-soft);
         }
 
@@ -1954,14 +1967,20 @@
             color: var(--ink-soft);
             font-size: 1.03rem;
             line-height: 1.85;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
         }
 
+        /* Dòng chúc bằng tiếng Anh giữ căn giữa, không kéo giãn hai lề */
         .thank-you .wish {
             font-family: var(--font-script);
             font-size: 1.35rem;
             color: var(--red-500);
             margin-top: 20px;
             line-height: 1.5;
+            text-align: center;
+            hyphens: none;
         }
 
         .signature {
@@ -2171,20 +2190,17 @@
                         học Bách khoa của mình đã đi tới trạm dừng chân cuối cùng. 
                             </p>
                         <p>
-                                Bách khoa trong mình không chỉ là những giảng đường thênh thang, những đêm ôn thi đến
-                        sáng hay những buổi cặm cụi chạy deadline không nghỉ mà nơi đây còn đong đầy những kỷ niệm đẹp
-                        đẽ, còn là những tháng ngày chứa đựng đủ những cảm xúc buồn vui, những tâm tư và những tình cảm
-                        quý giá. Thật hạnh phúc biết bao vì trong hành trình ấy có sự đồng hành của bạn. 
-                            </p>
-                        <p>
-                                Cảm ơn bạn vì đã luôn ở bên, sẻ chia và tiếp thêm động lực cho mình suốt chặng đường vừa
-                        qua.
-                        Nếu không có những lời động viên, những sự hỗ trợ âm thầm hay những buổi chuyện
+                                Bách khoa trong mình không chỉ có giảng đường thênh thang, có những đêm ôn thi đến
+                        sáng hay nhiều buổi cặm cụi chạy deadline không nghỉ mà nơi đây còn đong đầy những kỷ niệm đẹp
+                        đẽ, còn là những tháng ngày chứa đựng đủ cảm xúc buồn vui, những tâm tư và những tình cảm
+                        quý giá. Cảm ơn bạn vì đã luôn ở bên, đồng hành, sẻ chia và tiếp thêm động lực cho mình suốt
+                        chặng đường vừa
+                        qua. Nếu không có những lời động viên, sự hỗ trợ âm thầm hay những buổi chuyện
                         trò giải tỏa áp lực, hành trình này của mình chắc chắn sẽ không thể trọn vẹn và ý nghĩa đến thế.
                             </p>
                         <p>
                                 Lễ tốt nghiệp sắp tới đây là một dấu mốc quan trọng, khép lại thời sinh viên còn
-                        nhiều vô tư và mở ra một chân trời mới. Trong khoảnh khắc đặc biệt và thiêng liêng này, sự hiện
+                        nhiều vô tư và mở ra một chân trời mới. Trong khoảnh khắc đặc biệt này, sự hiện
                         diện của bạn sẽ là món quà vô giá và niềm hạnh phúc lớn lao đối với mình.
                             </p>
                         <p>
@@ -2242,7 +2258,7 @@
                 </div>
 
                 <div class="timeline">
-                    <div class="timeline-item highlight">
+                    <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-time">7:00 &ndash; 9:00</div>
@@ -2250,7 +2266,8 @@
                                 niệm chương từ nhà trường</div>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <!-- Mốc giữa là khung giờ mời khách nên tô đỏ cho nổi bật -->
+                    <div class="timeline-item highlight">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-time">9:00 &ndash; 12:00</div>
@@ -2328,7 +2345,7 @@
                                 <i class="fa-regular fa-image"></i>
                                 <span class="slot-hint">Thêm ảnh <code>my2.jpg</code></span>
                             </div>
-                            <div class="gallery-caption">Đại gia đình nhà Cú, yêu lắm!</div>
+                            <div class="gallery-caption">Đại gia đình nhà Cú, yêu rất nhiều!</div>
                         </div>
                     </div>
                     <div class="gallery-item" tabindex="0">
@@ -2348,7 +2365,7 @@
                                 <i class="fa-regular fa-image"></i>
                                 <span class="slot-hint">Thêm ảnh <code>my4.jpg</code></span>
                             </div>
-                            <div class="gallery-caption">Trộm vía có kha khá giấy khen (Trên này là nhận SV5T thành phố
+                            <div class="gallery-caption">Trộm vía có kha khá giấy khen (Đi nhận SV5T thành phố
                                 nè)</div>
                         </div>
                     </div>
@@ -2359,7 +2376,7 @@
                                 <i class="fa-regular fa-image"></i>
                                 <span class="slot-hint">Thêm ảnh <code>my5.jpg</code></span>
                             </div>
-                            <div class="gallery-caption">Cuối cùng cũng bảo vệ xong đồ án tốt nghiệp rồi</div>
+                            <div class="gallery-caption">Cuối cùng cũng bảo vệ thành công đồ án tốt nghiệp rồi!</div>
                         </div>
                     </div>
                     <div class="gallery-item" tabindex="0">
