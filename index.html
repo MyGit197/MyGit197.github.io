@@ -2213,7 +2213,7 @@
         <div class="confetti" id="envelopeConfetti"></div>
 
         <p class="envelope-eyebrow"><span>Có một thiệp mời dành cho bạn nè</span></p>
-        <p class="envelope-sub">Hy vọng bạn sẽ đến chung vui và lưu giữ những khoảnh khắc đáng nhớ cùng mình!</p>
+        <p class="envelope-sub">Hy vọng bạn sẽ đến chung vui và lưu lại những khoảnh khắc đáng nhớ cùng mình!</p>
 
         <div class="envelope-wrapper" id="envelope-wrapper">
             <div class="envelope">
@@ -2226,7 +2226,7 @@
                         <div class="label-row"><span class="label-tag">From</span><span class="label-value">Nguyễn
                                 My</span></div>
                         <div class="label-row"><span class="label-tag">To</span><span class="label-value"
-                                id="envelopeToName">you</span></div>
+                                id="envelopeToName">You</span></div>
                     </div>
                     <div class="card-message" id="cardMessage">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -2579,7 +2579,7 @@
         // Nhãn "To" trên tem thư trong phong bì cập nhật theo tên khách gõ vào
         guestInput.addEventListener('input', () => {
             const v = guestInput.value.trim();
-            envelopeToName.textContent = v || 'you';
+            envelopeToName.textContent = v || 'You';
         });
 
         let opened = false;
@@ -2603,7 +2603,8 @@
 
             const name = guestInput.value.trim();
             currentGuestName = name;
-            displayGuestName.textContent = name ? ` ${name}` : ' bạn';
+            // Khách không gõ tên thì gọi thân mật "bạn iu" cho đỡ trống trải
+            displayGuestName.textContent = name ? ` ${name}` : ' bạn iu';
 
             envelopeWrapper.classList.add('open');
             rock(0);
