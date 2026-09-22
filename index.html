@@ -1,0 +1,3377 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#bfe3fb">
+    <meta name="description"
+        content="Thiệp mời Lễ Tốt Nghiệp - Nguyễn Thị Trà My | 26.09.2026 | Quảng trường C1, Đại học Bách khoa Hà Nội">
+    <!-- Thiệp riêng tư: chỉ ai có link mới xem, không cho Google lập chỉ mục.
+         Nếu muốn thiệp xuất hiện trên kết quả tìm kiếm thì xoá dòng dưới đây. -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Happy Graduation | Nguyễn Thị Trà My</title>
+
+    <!-- Thẻ xem trước khi gửi link qua Zalo / Messenger / Facebook.
+         Sau khi biết địa chỉ thật, đổi og:url và og:image thành link đầy đủ,
+         ví dụ https://<tên-tài-khoản>.github.io/<tên-repo>/preview.jpg -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Thiệp mời Lễ Tốt Nghiệp">
+    <meta property="og:title" content="Thiệp mời Lễ Tốt Nghiệp – Nguyễn Thị Trà My">
+    <meta property="og:description"
+        content="9:00 – 12:00, Thứ Bảy 26.09.2026 tại Quảng trường C1, Đại học Bách khoa Hà Nội. Mời bạn đến chung vui!">
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="vi_VN">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="seal-hust.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- StPageFlip: thư viện lật trang chuyên dụng (có cong góc giấy thật) cho sổ lưu bút -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
+    <style>
+        :root {
+            /* --- Bảng màu tươi sáng lấy từ poster --- */
+            --sky-50: #f2fafe;
+            --sky-100: #e2f3fd;
+            --sky-200: #c6e7fa;
+            --sky-300: #a2d7f4;
+            --sky-500: #5fb4e5;
+
+            --cream-50: #fffdf6;
+            --cream-100: #fff8e8;
+            --cream-200: #ffefc9;
+
+            --sun-300: #ffe07d;
+            --sun-400: #ffd23f;
+            --sun-500: #f7b500;
+            --sun-600: #d99400;
+
+            --red-400: #e05055;
+            --red-500: #c2262c;
+            --red-600: #9c1c22;
+            --red-50: #ffeceb;
+
+            --green-500: #2e9e4f;
+
+            --ink: #44302a;
+            --ink-soft: #6e574e;
+            --ink-muted: #96827a;
+
+            --font-display: 'Baloo 2', cursive;
+            --font-script: 'Dancing Script', cursive;
+            --font-sans: 'Be Vietnam Pro', sans-serif;
+
+            --radius-sm: 12px;
+            --radius-md: 22px;
+            --radius-lg: 34px;
+
+            --shadow-sticker: 0 6px 0 rgba(68, 48, 42, 0.08), 0 14px 30px rgba(68, 48, 42, 0.12);
+            --shadow-card: 0 18px 44px rgba(95, 180, 229, 0.22);
+            --shadow-pop: 0 10px 0 var(--sun-600);
+
+            /* Vân giấy: nhiễu SVG đã khử màu, phủ lên nền để giấy có độ ráp, hết bóng */
+            --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='0.32'/%3E%3C/svg%3E");
+
+            /* Vân cong trên mặt bìa. Mỗi đường bắt đầu và kết thúc đúng cùng cao độ với
+               tiếp tuyến nằm ngang, và khoảng cách dọc chia đều đúng chiều cao ô, nên khi
+               lặp lại các đường nối liền nhau, không bị đứt khúc ở mối ghép. */
+            --cover-swirl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170' viewBox='0 0 170 170'%3E%3Cg fill='none' stroke='%23f2dcae' stroke-width='1.1' opacity='0.22'%3E%3Cpath d='M0 28.3 C 14 28.3 28.5 14 42.5 14 C 56.5 14 71 28.3 85 28.3 C 99 28.3 113.5 14 127.5 14 C 141.5 14 156 28.3 170 28.3'/%3E%3Cpath d='M0 85 C 14 85 28.5 70.7 42.5 70.7 C 56.5 70.7 71 85 85 85 C 99 85 113.5 70.7 127.5 70.7 C 141.5 70.7 156 85 170 85'/%3E%3Cpath d='M0 141.7 C 14 141.7 28.5 127.4 42.5 127.4 C 56.5 127.4 71 141.7 85 141.7 C 99 141.7 113.5 127.4 127.5 127.4 C 141.5 127.4 156 141.7 170 141.7'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Không dùng scroll-behavior: smooth toàn cục vì nó xung đột với ScrollTrigger
+           (làm hiệu ứng đổi màu trời/nhiều tầng mây theo cuộn bị giật, không mượt). */
+
+        body {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            color: var(--ink);
+            background: var(--sky-100);
+            overflow-x: hidden;
+            overflow-y: visible;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ============================= */
+        /* NỀN TRỜI + MÂY + CONFETTI     */
+        /* ============================= */
+        .sky-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(255, 210, 63, 0.26), transparent 42%),
+                radial-gradient(circle at 85% 10%, rgba(255, 210, 63, 0.26), transparent 42%),
+                linear-gradient(180deg, var(--sky-200) 0%, var(--sky-100) 34%, var(--cream-100) 78%, var(--cream-200) 100%);
+        }
+
+        .sky-layer-dusk {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            background:
+                radial-gradient(circle at 80% 12%, rgba(255, 214, 150, 0.55), transparent 46%),
+                linear-gradient(180deg, #6f6bb0 0%, #b784ac 28%, #f0916f 55%, #ffbf7a 78%, #ffe3a8 100%);
+        }
+
+        .clouds {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        /* Mỗi tầng mây là 1 lớp riêng: parallax cuộn trang chỉ dịch chuyển LỚP này,
+           còn từng đám mây bên trong tự trôi ngang độc lập - tránh 2 hiệu ứng cùng
+           ghi đè "transform" lên 1 phần tử gây giật/nhấp nháy lúc dừng cuộn. */
+        .cloud-layer {
+            position: absolute;
+            inset: 0;
+            will-change: transform;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 100px;
+            opacity: 0.85;
+            filter: blur(0.5px);
+            will-change: transform;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            width: 55%;
+            height: 170%;
+            top: -70%;
+            left: 12%;
+        }
+
+        .cloud::after {
+            width: 40%;
+            height: 140%;
+            top: -50%;
+            right: 14%;
+        }
+
+        .star-deco {
+            position: absolute;
+            color: #fff6d8;
+            filter: drop-shadow(0 0 5px rgba(255, 229, 158, 0.85));
+            will-change: transform, opacity;
+        }
+
+        .moon-deco {
+            position: absolute;
+            color: #fff6d8;
+            filter: drop-shadow(0 0 16px rgba(255, 224, 130, 0.85));
+            will-change: transform;
+        }
+
+        .confetti {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            top: -60px;
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.22) 38%, rgba(173, 216, 255, 0.12) 68%, rgba(173, 216, 255, 0.04) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            box-shadow:
+                inset -3px -3px 6px rgba(110, 160, 200, 0.22),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.7),
+                0 2px 8px rgba(110, 160, 200, 0.12);
+            opacity: 0;
+            animation: bubbleFall var(--dur) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes bubbleFall {
+            0% {
+                transform: translate(0, -10vh);
+                opacity: 0;
+            }
+
+            12% {
+                opacity: var(--op, 0.7);
+            }
+
+            35% {
+                transform: translate(var(--drift1), 28vh);
+            }
+
+            65% {
+                transform: translate(var(--drift2), 66vh);
+            }
+
+            88% {
+                opacity: var(--op, 0.7);
+            }
+
+            100% {
+                transform: translate(var(--drift3), 112vh);
+                opacity: 0;
+            }
+        }
+
+        /* ============================= */
+        /* MÀN HÌNH PHONG BÌ             */
+        /* ============================= */
+        #envelope-screen {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 34px 20px;
+            z-index: 1000;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.9), transparent 48%),
+                linear-gradient(170deg, var(--sky-300), var(--sky-100) 52%, var(--cream-100));
+        }
+
+        .envelope-eyebrow {
+            position: relative;
+            z-index: 3;
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--red-500);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .envelope-eyebrow span {
+            display: inline-block;
+            background: var(--sun-300);
+            padding: 2px 14px 4px;
+            border-radius: 999px;
+            box-shadow: 0 4px 0 rgba(217, 148, 0, 0.35);
+            transform: rotate(-2deg);
+        }
+
+        .envelope-sub {
+            position: relative;
+            z-index: 3;
+            font-family: var(--font-script);
+            font-size: 1.5rem;
+            color: var(--ink-soft);
+            margin-bottom: 26px;
+            text-align: center;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            z-index: 3;
+            width: min(330px, 84vw);
+            height: 218px;
+            perspective: 1200px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            animation: envelopeBob 3.6s ease-in-out infinite;
+        }
+
+        .envelope-wrapper.open {
+            animation: none;
+        }
+
+        @keyframes envelopeBob {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-9px);
+            }
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-origin: center bottom;
+            will-change: transform;
+        }
+
+        .envelope-front {
+            position: absolute;
+            inset: 0;
+            background:
+                url('envelope-front-bg.png') center / cover no-repeat,
+                linear-gradient(145deg, var(--cream-50), var(--cream-200));
+            border-radius: 10px;
+            border: 2px solid #fff;
+            box-shadow: var(--shadow-sticker);
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 44%;
+            background: linear-gradient(175deg, var(--sun-400), var(--sun-500));
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top center;
+            backface-visibility: hidden;
+            z-index: 5;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .seal {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 84px;
+            height: 84px;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+        }
+
+        .seal img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(90, 10, 12, 0.3));
+        }
+
+        .card-inside {
+            position: absolute;
+            left: 8%;
+            width: 84%;
+            height: 80%;
+            bottom: 12%;
+            background: #fff;
+            border-radius: 8px;
+            border: 2px dashed var(--sun-300);
+            z-index: 4;
+            overflow: hidden;
+        }
+
+        .card-inside .envelope-wordmark {
+            position: absolute;
+            left: 12px;
+            bottom: 10px;
+            width: 40px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        .envelope-label {
+            position: absolute;
+            right: 14px;
+            bottom: 10px;
+            text-align: left;
+        }
+
+        .envelope-label .label-row {
+            display: flex;
+            align-items: baseline;
+            gap: 7px;
+        }
+
+        .envelope-label .label-row+.label-row {
+            margin-top: 5px;
+        }
+
+        .envelope-label .label-tag {
+            flex: 0 0 auto;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.52rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: rgba(68, 48, 42, 0.55);
+            text-shadow:
+                0.5px 0.5px 0 rgba(255, 255, 255, 0.85),
+                -0.5px -0.5px 0.5px rgba(68, 48, 42, 0.3);
+        }
+
+        .envelope-label .label-value {
+            display: inline-block;
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: var(--font-script);
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: rgba(194, 38, 44, 0.62);
+            text-shadow:
+                1px 1px 0.5px rgba(255, 255, 255, 0.9),
+                -0.5px -0.5px 0.5px rgba(156, 28, 34, 0.35);
+            text-decoration: underline wavy rgba(194, 38, 44, 0.4);
+            text-decoration-thickness: 1.1px;
+            text-underline-offset: 2px;
+        }
+
+        .card-message {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 16px;
+            text-align: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1rem, 5vw, 1.3rem);
+            line-height: 1.3;
+            color: var(--red-500);
+            opacity: 0;
+            z-index: 6;
+        }
+
+        .card-message i {
+            font-size: 1.6rem;
+            color: var(--sun-500);
+        }
+
+        .guest-input-container {
+            position: relative;
+            z-index: 3;
+            width: min(330px, 84vw);
+        }
+
+        #guest-name-input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 999px;
+            border: 2px solid #fff;
+            background: rgba(255, 255, 255, 0.92);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--ink);
+            text-align: center;
+            outline: none;
+            box-shadow: 0 8px 20px rgba(95, 180, 229, 0.25);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #guest-name-input::placeholder {
+            color: var(--ink-muted);
+        }
+
+        #guest-name-input:focus {
+            border-color: var(--sun-400);
+            transform: translateY(-2px);
+        }
+
+        #open-btn {
+            position: relative;
+            z-index: 3;
+            margin-top: 18px;
+            padding: 14px 34px;
+            border: none;
+            border-radius: 999px;
+            background: var(--sun-400);
+            color: var(--red-600);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: var(--shadow-pop);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        #open-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 13px 0 var(--sun-600);
+        }
+
+        #open-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 var(--sun-600);
+        }
+
+        /* ============================= */
+        /* BỐ CỤC CHUNG                  */
+        /* ============================= */
+        #main-content {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 18px 60px;
+        }
+
+        section {
+            padding: 62px 0;
+            position: relative;
+        }
+
+        .reveal,
+        .timeline-item,
+        .hero-reveal {
+            opacity: 0;
+            transform: translateY(34px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-eyebrow {
+            font-family: var(--font-script);
+            font-size: 1.5rem;
+            color: var(--sun-600);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1.9rem, 5.4vw, 2.7rem);
+            color: var(--red-500);
+            line-height: 1.15;
+            position: relative;
+            display: inline-block;
+            padding: 0 6px;
+            z-index: 0;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6px;
+            height: 12px;
+            background: var(--sun-300);
+            border-radius: 999px;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        /* ============================= */
+        /* HERO                          */
+        /* ============================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 0 50px;
+        }
+
+        .hero-hello {
+            font-family: var(--font-script);
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            color: var(--sun-600);
+            margin-bottom: 2px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(2.2rem, 8vw, 3.6rem);
+            color: var(--red-500);
+            line-height: 1.05;
+            margin-bottom: 26px;
+        }
+
+        .hero-title .hi {
+            color: var(--green-500);
+        }
+
+        .poster-frame {
+            position: relative;
+            width: min(430px, 88vw);
+            background: #fff;
+            padding: 14px 14px 52px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sticker);
+            transform: rotate(-2deg);
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .poster-frame:hover {
+            transform: rotate(0deg) scale(1.015);
+        }
+
+        .poster-frame img {
+            border-radius: 4px;
+        }
+
+        .poster-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 14px;
+            font-family: var(--font-script);
+            font-size: 1.35rem;
+            color: var(--ink-soft);
+        }
+
+        .tape {
+            position: absolute;
+            width: 108px;
+            height: 30px;
+            background: rgba(255, 210, 63, 0.75);
+            box-shadow: 0 2px 6px rgba(68, 48, 42, 0.12);
+        }
+
+        .tape.tl {
+            top: -14px;
+            left: -22px;
+            transform: rotate(-32deg);
+        }
+
+        .tape.tr {
+            top: -14px;
+            right: -22px;
+            transform: rotate(32deg);
+            background: rgba(194, 38, 44, 0.22);
+        }
+
+        .sticker {
+            position: absolute;
+            font-size: 1.6rem;
+            color: var(--sun-400);
+            animation: wobble 3.4s ease-in-out infinite;
+            filter: drop-shadow(0 3px 5px rgba(68, 48, 42, 0.15));
+        }
+
+        @keyframes wobble {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-6deg);
+            }
+
+            50% {
+                transform: translateY(-9px) rotate(8deg);
+            }
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(2rem, 7.6vw, 3.1rem);
+            color: var(--red-600);
+            margin-top: 34px;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-major {
+            font-size: clamp(0.92rem, 2.6vw, 1.05rem);
+            font-weight: 500;
+            color: var(--ink-soft);
+            margin-top: 8px;
+            max-width: 480px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 22px;
+        }
+
+        .badge {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 7px 18px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--red-500);
+            box-shadow: 0 5px 0 rgba(255, 210, 63, 0.75);
+            border: 2px solid var(--sun-300);
+        }
+
+        .badge.green {
+            color: var(--green-500);
+            border-color: rgba(46, 158, 79, 0.35);
+            box-shadow: 0 5px 0 rgba(46, 158, 79, 0.2);
+        }
+
+        .scroll-cue {
+            margin-top: 40px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--red-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-card);
+            animation: bounce 1.9s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(9px);
+            }
+        }
+
+        /* ============================= */
+        /* LỜI CHÀO                      */
+        /* ============================= */
+        #greeting {
+            padding: 30px 0 10px;
+            text-align: center;
+        }
+
+        .greeting-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 30px 26px;
+            box-shadow: var(--shadow-card);
+            border: 2px dashed var(--sun-300);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .greeting-card h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(1.25rem, 4.4vw, 1.7rem);
+            color: var(--ink);
+            line-height: 1.4;
+        }
+
+        .guest-name {
+            color: var(--red-500);
+            font-family: var(--font-script);
+            font-size: 1.25em;
+        }
+
+        .greeting-card p {
+            margin-top: 12px;
+            color: var(--ink-soft);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        /* ============================= */
+        /* SỔ LƯU BÚT (kiểu sổ tay lật trang) */
+        /* ============================= */
+        /* Mỗi trang khổ 3:4. Máy tính mở 2 trang (landscape), điện thoại tự rút về
+           1 trang (portrait) khi bề ngang nhỏ hơn minWidth*2 của StPageFlip. */
+        .notebook-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .notebook {
+            position: relative;
+        }
+
+        /* Bóng hắt dưới chân sách - bám đúng phần sách thật sự đang nằm trên mặt bàn */
+        .notebook::after {
+            content: '';
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            bottom: -14px;
+            height: 20px;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, rgba(68, 48, 42, 0.3), rgba(68, 48, 42, 0) 70%);
+            transition: left 0.45s ease, right 0.45s ease, opacity 0.25s ease;
+        }
+
+        /* Sổ đóng lại thì chỉ còn một tấm bìa: bóng co về đúng nửa đang có bìa.
+           Bìa trước thư viện vẽ ở nửa phải, bìa sau ở nửa trái. */
+        .notebook.is-landscape.is-closed-front::after {
+            left: 52%;
+            right: 4%;
+        }
+
+        .notebook.is-landscape.is-closed-back::after {
+            left: 4%;
+            right: 52%;
+        }
+
+        /* Trong lúc lật, sách chưa nằm yên nên bóng nhạt bớt để không bị lệch pha */
+        .notebook.is-flipping::after {
+            opacity: 0.35;
+        }
+
+        /* Bóng dọc giữa sách: trang giấy trông hơi phồng lên về phía gáy */
+        .book-gutter {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 64px;
+            transform: translateX(-50%);
+            z-index: 3;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            background: linear-gradient(to right,
+                    rgba(68, 48, 42, 0) 0%,
+                    rgba(68, 48, 42, 0.1) 35%,
+                    rgba(68, 48, 42, 0.2) 50%,
+                    rgba(68, 48, 42, 0.1) 65%,
+                    rgba(68, 48, 42, 0) 100%);
+        }
+
+        /* Một trang: gáy nằm ở mép trái */
+        .notebook:not(.is-landscape) .book-gutter {
+            left: 0;
+            width: 26px;
+            transform: none;
+            background: linear-gradient(to right, rgba(68, 48, 42, 0.2), rgba(68, 48, 42, 0));
+        }
+
+        /* Sổ đang đóng (nhìn thấy bìa) thì không có bóng gáy giữa */
+        .notebook.is-closed .book-gutter {
+            opacity: 0;
+        }
+
+
+        /* Lúc đang lật, bóng gáy nằm đè lên trang đang bay làm trang trông như trong
+           suốt. Tắt ngay lập tức từ nhịp đầu tiên của cú lật (không trễ, không mờ dần)
+           để mắt bắt được chuyển động lật, xong mới hiện lại từ từ. */
+        .notebook.is-flipping .book-gutter {
+            opacity: 0;
+            transition: none;
+        }
+
+        /* Khung sách do thư viện StPageFlip dựng (bản rút gọn của stPageFlip.css) */
+        .stf__parent {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            transform: translateZ(0);
+            touch-action: pan-y;
+            z-index: 2;
+        }
+
+        .sft__wrapper {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .stf__parent canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .stf__block {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            perspective: 2000px;
+        }
+
+        .stf__item {
+            display: none;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        .stf__outerShadow,
+        .stf__innerShadow,
+        .stf__hardShadow,
+        .stf__hardInnerShadow {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* trang và bìa đều bo góc nên bóng do thư viện vẽ cũng phải bo theo,
+               không thì thấy bóng vuông góc thò ra sau mép trang đã bo tròn */
+            border-radius: 8px;
+        }
+
+        .notebook-page {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            /* kéo góc trang để lật mà không bị bôi đen chữ */
+            user-select: none;
+            -webkit-user-select: none;
+            border-radius: 10px;
+            /* bóng mờ trung tính, không hắt xanh bóng loáng như trước */
+            box-shadow: 0 10px 26px rgba(68, 48, 42, 0.16);
+            padding: 30px 16px 20px 34px;
+            /* Vân giấy: lớp nhiễu SVG mịn phủ lên nền kem cho ra chất giấy ráp,
+               thay vì mặt phẳng trơn bóng. */
+            background-color: #fdf8ea;
+            background-image: var(--paper-grain);
+            background-position: 0 0;
+            background-size: 160px 160px;
+            background-repeat: repeat;
+            background-blend-mode: multiply;
+        }
+
+        /* Dòng kẻ nằm trên lớp trong (thư viện lật trang ghi đè toàn bộ inline style
+           của phần tử trang mỗi khung hình, nên không thể canh dòng trên chính nó).
+           Vị trí dòng kẻ được JS canh lại cho khớp đúng từng dòng chữ. */
+        .notebook-page-inner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-image:
+                repeating-linear-gradient(to bottom, transparent, transparent 25px, var(--sky-200) 26px);
+            background-position: 0 6px;
+            background-repeat: repeat;
+        }
+
+        .notebook-page--plain .notebook-page-inner,
+        .notebook-hardpage .notebook-page-inner {
+            background-image: none;
+        }
+
+        /* Trang lót sát bìa cứng: giấy trơn, không kẻ dòng nhưng vẫn có vân giấy */
+        .notebook-page--plain {
+            background-color: #fdf8ea;
+            background-image: var(--paper-grain);
+            background-size: 160px 160px;
+            background-position: 0 0;
+            background-blend-mode: multiply;
+        }
+
+        .notebook-page--plain::before {
+            display: none;
+        }
+
+        /* Bìa sổ: trang cứng, bìa đỏ có vân vải nhám như bìa sổ thật */
+        /* Bìa cứng cổ điển: đỏ trầm, mặt chìm (vân nhân theo multiply nên không bóng),
+           bìa dày nên có mép gáy đặc ở cạnh ngoài. */
+        .notebook-hardpage {
+            padding: 0;
+            overflow: visible;
+            transform-style: preserve-3d;
+            background-color: #8e2328;
+            background-image:
+                var(--cover-swirl),
+                var(--paper-grain),
+                linear-gradient(155deg, #a02c30, #8a2126 58%, #72181c);
+            background-size: 170px 170px, 160px 160px, auto;
+            background-blend-mode: normal, multiply, normal;
+            border-radius: 6px;
+        }
+
+        /* Mép gáy dựng đứng trong không gian 3D: lúc bìa xoay tới 90 độ vẫn thấy
+           tấm bìa có bề dày thật chứ không mỏng dính như tờ giấy. */
+        .cover-edge {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 14px;
+            background: linear-gradient(to right, #5e1216, #7d1f23 45%, #4d0f13);
+            border-radius: 2px;
+            /* chỉ hiện khi mép quay mặt về phía người xem (lúc bìa dựng gần 90 độ),
+               còn lại ẩn đi để không thấy một dải lạ chạy theo trang lúc lật */
+            backface-visibility: hidden;
+        }
+
+        /* Mép dựng vuông góc với mặt bìa: bìa phẳng thì mép nhìn nghiêng nên vô hình,
+           bìa xoay tới 90 độ thì mép quay mặt ra, lộ đúng bề dày tấm bìa. */
+        .cover-front .cover-edge {
+            right: 0;
+            transform-origin: right center;
+            transform: rotateY(90deg);
+        }
+
+        .cover-back .cover-edge {
+            left: 0;
+            transform-origin: left center;
+            transform: rotateY(-90deg);
+        }
+
+        /* Độ dày của tấm bìa: các lớp đặc xếp lệch ở cạnh ngoài (cạnh sách),
+           nhìn chính diện thấy rõ bìa là một tấm dày chứ không phải tờ giấy. */
+        /* Bóng sát mép, không đổ lệch ra xa (độ dày đã do mép 3D đảm nhiệm) */
+        .notebook-hardpage.cover-front,
+        .notebook-hardpage.cover-back {
+            box-shadow:
+                inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+                0 4px 10px rgba(45, 8, 10, 0.3),
+                0 10px 20px rgba(60, 10, 12, 0.22);
+        }
+
+        .notebook-hardpage::before {
+            display: none;
+        }
+
+        .notebook-cover-face {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 26px 20px;
+            text-align: center;
+            color: #f3e3c4;
+            /* khung chỉ vàng ép chìm quanh mép bìa - kiểu bìa sách cũ */
+            box-shadow:
+                inset 0 0 0 1px rgba(214, 178, 106, 0.55),
+                inset 0 0 0 3px rgba(0, 0, 0, 0.22),
+                inset 0 1px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin: 12px;
+            height: calc(100% - 24px);
+        }
+
+        .cover-label {
+            background: #f2e6cc;
+            border-radius: 3px;
+            padding: 14px 18px;
+            box-shadow:
+                0 4px 10px rgba(35, 6, 8, 0.35),
+                inset 0 0 0 1px rgba(140, 100, 48, 0.35);
+            transform: rotate(-1deg);
+            max-width: 100%;
+        }
+
+        .cover-eyebrow {
+            font-family: var(--font-script);
+            font-size: 0.95rem;
+            color: #9c7a2e;
+        }
+
+        .cover-label h3 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1.3rem, 5vw, 1.7rem);
+            color: var(--red-500);
+            line-height: 1.15;
+        }
+
+        .cover-sub {
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-top: 4px;
+        }
+
+        .cover-owner {
+            font-family: var(--font-script);
+            font-size: 1.15rem;
+            color: #e0c48a;
+        }
+
+        .cover-hint {
+            font-size: 0.72rem;
+            color: rgba(230, 209, 170, 0.7);
+            margin-top: 2px;
+        }
+
+        .notebook-cover-face.back {
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .notebook-cover-face.back i {
+            font-size: 1.5rem;
+            color: #d6b26a;
+        }
+
+        .notebook-cover-face.back p {
+            font-family: var(--font-script);
+            font-size: 1.15rem;
+            line-height: 1.4;
+            max-width: 220px;
+        }
+
+        .notebook-cover-face.back .cover-owner {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            color: rgba(255, 248, 232, 0.75);
+        }
+
+        .notebook-blank {
+            flex: 1;
+        }
+
+        .notebook-page::before {
+            content: '';
+            position: absolute;
+            left: 26px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--red-400);
+            opacity: 0.35;
+        }
+
+        .notebook-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .notebook-toggle {
+            border: none;
+            cursor: pointer;
+            padding: 10px 24px;
+            font-size: 0.92rem;
+        }
+
+        .notebook-pagenum {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--ink-muted);
+            margin-top: 12px;
+        }
+
+        .notebook-cover {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+            padding: 0 6px;
+        }
+
+        .notebook-cover h3 {
+            font-family: var(--font-script);
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            color: var(--red-500);
+            line-height: 1.2;
+        }
+
+        .notebook-cover p {
+            color: var(--ink-soft);
+            max-width: 420px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* Tên ký nằm ngay dưới đoạn lời nhắn (cách một nhịp), không dính đáy trang */
+        .notebook-entry {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            padding-right: 4px;
+        }
+
+        .notebook-entry-msg {
+            flex: 0 0 auto;
+            font-size: 0.88rem;
+            line-height: 26px;
+            color: var(--ink);
+            white-space: pre-wrap;
+            word-break: break-word;
+            transition: font-size 0.15s ease;
+        }
+
+        .notebook-entry-sign {
+            flex: 0 0 auto;
+            align-self: flex-end;
+            text-align: right;
+            font-family: var(--font-script);
+            font-size: 1.05rem;
+            color: var(--red-500);
+            margin-top: 16px;
+            max-width: 100%;
+        }
+
+        .notebook-entry-time {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.76rem;
+            color: var(--ink-muted);
+        }
+
+        .notebook-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 330px;
+            text-align: center;
+            color: var(--ink-muted);
+        }
+
+        .notebook-cta {
+            display: block;
+            flex: 0 0 auto;
+            align-self: flex-end;
+            margin-top: 16px;
+            font-family: var(--font-script);
+            font-size: 1.15rem;
+            color: var(--sun-600);
+            background: none;
+            border: none;
+            border-bottom: 2px dashed var(--sun-400);
+            padding: 0 2px 3px;
+            cursor: pointer;
+        }
+
+        /* Mở 2 trang: trang lẻ (thứ tự chẵn trong DOM) nằm bên trái, chỉ để dòng mời
+           viết lời nhắn ở trang bên phải cho khỏi lặp hai lần trên cùng một mặt mở. */
+        .notebook.is-landscape .notebook-page:nth-child(even) .notebook-cta {
+            display: none;
+        }
+
+        .notebook-write {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            gap: 14px;
+        }
+
+        .notebook-write-title {
+            font-family: var(--font-script);
+            font-size: clamp(1.3rem, 5vw, 1.7rem);
+            color: var(--red-500);
+            text-align: center;
+            margin: 0 0 2px;
+        }
+
+        .notebook-write-textarea {
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+            border: none;
+            background: transparent;
+            resize: none;
+            font-family: inherit;
+            font-size: 0.85rem;
+            line-height: 26px;
+            color: var(--ink);
+            padding: 0;
+        }
+
+        .notebook-write-textarea,
+        .notebook-signline-input {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        .notebook-write-textarea:focus {
+            outline: none;
+        }
+
+        .notebook-signline {
+            display: flex;
+            align-items: baseline;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .notebook-signline-label {
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            white-space: nowrap;
+        }
+
+        .notebook-signline-input {
+            flex: 1;
+            min-width: 0;
+            max-width: 200px;
+            border: none;
+            border-bottom: 2px dashed var(--sun-400);
+            background: transparent;
+            font-family: var(--font-script);
+            font-size: 1.1rem;
+            color: var(--red-500);
+            padding: 2px 4px;
+            text-align: right;
+        }
+
+        .notebook-signline-input:focus {
+            outline: none;
+            border-color: var(--red-400);
+        }
+
+        .guestbook-visibility {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            justify-content: center;
+        }
+
+        .notebook-check {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-script);
+            font-size: 1rem;
+            color: var(--ink-soft);
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .notebook-check input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .notebook-check-box {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            border: 2px solid var(--ink-muted);
+            border-radius: 3px;
+            position: relative;
+            transform: rotate(-3deg);
+            transition: border-color 0.15s ease;
+        }
+
+        .notebook-check-box::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 0px;
+            width: 6px;
+            height: 11px;
+            border: solid var(--red-500);
+            border-width: 0 3px 3px 0;
+            transform: rotate(38deg) scale(0);
+            transition: transform 0.18s ease;
+        }
+
+        .notebook-check input:checked~.notebook-check-box {
+            border-color: var(--red-500);
+        }
+
+        .notebook-check input:checked~.notebook-check-box::after {
+            transform: rotate(38deg) scale(1);
+        }
+
+        .notebook-check input:focus-visible~.notebook-check-box {
+            outline: 2px solid var(--sun-400);
+            outline-offset: 2px;
+        }
+
+        .notebook-check i {
+            color: var(--ink-muted);
+            font-size: 0.85em;
+        }
+
+        /* Nút gửi vẽ như một khung nét tay trên giấy, không phải nút bấm nổi */
+        .notebook-write .btn-pill {
+            align-self: center;
+            background: none;
+            color: var(--red-500);
+            font-family: var(--font-script);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            padding: 6px 22px 8px;
+            border: 2px solid rgba(194, 38, 44, 0.55);
+            border-radius: 60% 40% 55% 45% / 58% 55% 45% 42%;
+            box-shadow: none;
+            transform: rotate(-1deg);
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .notebook-write .btn-pill i {
+            font-size: 0.9rem;
+            color: var(--sun-600);
+        }
+
+        .notebook-write .btn-pill:hover {
+            background: rgba(194, 38, 44, 0.07);
+            transform: rotate(-1deg) translateY(-1px);
+        }
+
+        .notebook-write .btn-pill:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .guestbook-note {
+            text-align: center;
+            font-size: 0.7rem;
+            line-height: 1.4;
+            color: var(--ink-muted);
+        }
+
+        @media (max-width: 520px) {
+            .notebook-page {
+                padding: 30px 18px 20px 42px;
+            }
+
+            .notebook-cta {
+                font-size: 1rem;
+            }
+        }
+
+        /* ============================= */
+        /* SAVE THE DATE + COUNTDOWN     */
+        /* ============================= */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+            gap: 22px;
+        }
+
+        .detail-item {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            border-top: 6px solid var(--sun-400);
+            transition: transform 0.35s ease;
+        }
+
+        .detail-item:nth-child(2) {
+            border-top-color: var(--red-400);
+        }
+
+        .detail-item:hover {
+            transform: translateY(-6px) rotate(-0.6deg);
+        }
+
+        .detail-icon-wrap {
+            width: 62px;
+            height: 62px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: var(--cream-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--sun-600);
+            box-shadow: inset 0 -4px 0 rgba(255, 210, 63, 0.5);
+        }
+
+        .detail-item:nth-child(2) .detail-icon-wrap {
+            background: var(--red-50);
+            color: var(--red-500);
+            box-shadow: inset 0 -4px 0 rgba(194, 38, 44, 0.15);
+        }
+
+        .detail-item h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.22rem;
+            color: var(--red-500);
+            margin-bottom: 8px;
+        }
+
+        .detail-item p {
+            color: var(--ink-soft);
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        .detail-item strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .countdown-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 560px;
+            margin: 34px auto 0;
+        }
+
+        .countdown-item {
+            background: var(--red-500);
+            border-radius: var(--radius-sm);
+            padding: 16px 6px 12px;
+            text-align: center;
+            color: var(--cream-100);
+            box-shadow: 0 8px 0 var(--red-600);
+        }
+
+        .countdown-item:nth-child(even) {
+            background: var(--sun-400);
+            color: var(--red-600);
+            box-shadow: 0 8px 0 var(--sun-600);
+        }
+
+        .countdown-value {
+            display: block;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1.6rem, 6vw, 2.2rem);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .countdown-done {
+            grid-column: 1 / -1;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--red-500);
+            background: #fff;
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* ============================= */
+        /* CHƯƠNG TRÌNH                  */
+        /* ============================= */
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-left: 34px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 6px;
+            bottom: 6px;
+            width: 4px;
+            border-radius: 999px;
+            background: repeating-linear-gradient(180deg, var(--sun-400) 0 12px, transparent 12px 24px);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 22px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid var(--sun-500);
+            box-shadow: 0 0 0 4px rgba(255, 224, 125, 0.45);
+        }
+
+        .timeline-item.highlight .timeline-dot {
+            border-color: var(--red-500);
+            box-shadow: 0 0 0 4px rgba(194, 38, 44, 0.18);
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            box-shadow: 0 10px 26px rgba(95, 180, 229, 0.16);
+            border-left: 5px solid var(--sun-300);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(5px);
+        }
+
+        .timeline-item.highlight .timeline-content {
+            border-left-color: var(--red-500);
+            background: linear-gradient(120deg, #fff, var(--cream-100));
+        }
+
+        .timeline-time {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--sun-600);
+            font-size: 1.02rem;
+        }
+
+        .timeline-item.highlight .timeline-time {
+            color: var(--red-500);
+        }
+
+        .timeline-text {
+            color: var(--ink-soft);
+            font-size: 0.97rem;
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        .timeline-note {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--green-500);
+            background: rgba(46, 158, 79, 0.1);
+            padding: 3px 12px;
+            border-radius: 999px;
+        }
+
+        /* ============================= */
+        /* ĐỊA ĐIỂM                      */
+        /* ============================= */
+        .venue-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .venue-head {
+            padding: 24px 26px;
+            background: linear-gradient(120deg, var(--cream-100), var(--sky-100));
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .venue-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.28rem;
+            color: var(--red-500);
+        }
+
+        .venue-address {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            margin-top: 3px;
+        }
+
+        .venue-spot {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--green-500);
+            background: #fff;
+            padding: 8px 22px;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 6px 0 rgba(46, 158, 79, 0.2);
+            transform: rotate(-2deg);
+            white-space: nowrap;
+        }
+
+        .map-container {
+            height: 360px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .venue-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 22px;
+        }
+
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 26px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--red-500);
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid var(--sun-300);
+            box-shadow: 0 6px 0 rgba(255, 210, 63, 0.6);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 rgba(255, 210, 63, 0.6);
+        }
+
+        .btn-pill:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 rgba(255, 210, 63, 0.6);
+        }
+
+        /* ============================= */
+        /* KHOẢNH KHẮC                   */
+        /* ============================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            position: relative;
+            background: #fff;
+            padding: 12px 12px 16px;
+            border-radius: 6px;
+            box-shadow: var(--shadow-sticker);
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Mỗi ảnh nghiêng một góc khác nhau, xoay vòng mỗi 6 ảnh, để trông như ảnh rải tự nhiên
+           thay vì chỉ 2 kiểu lặp lại đối xứng. */
+        .gallery-item:nth-child(6n+1) {
+            transform: rotate(-2.2deg);
+        }
+
+        .gallery-item:nth-child(6n+2) {
+            transform: rotate(1.6deg);
+        }
+
+        .gallery-item:nth-child(6n+3) {
+            transform: rotate(-0.8deg);
+        }
+
+        .gallery-item:nth-child(6n+4) {
+            transform: rotate(2.4deg);
+        }
+
+        .gallery-item:nth-child(6n+5) {
+            transform: rotate(-1.7deg);
+        }
+
+        .gallery-item:nth-child(6n+6) {
+            transform: rotate(1.1deg);
+        }
+
+        .gallery-item:hover {
+            transform: rotate(0deg) translateY(-6px);
+        }
+
+        .gallery-photo {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: 4px;
+            overflow: hidden;
+            background: linear-gradient(140deg, var(--cream-100), var(--sky-100));
+        }
+
+        .gallery-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-photo>i,
+        .gallery-photo .slot-hint {
+            display: none;
+        }
+
+        .gallery-item.empty .gallery-photo>i,
+        .gallery-item.empty .gallery-photo .slot-hint {
+            display: block;
+        }
+
+        /* Tên ảnh nằm trong dải trắng dưới ảnh (kiểu ảnh polaroid). Trước đây dùng
+           position:absolute nên nó bám theo khối .reveal - khối này chỉ bọc đúng phần
+           ảnh - thành ra chữ rơi vào trong ảnh. */
+        .gallery-caption {
+            margin-top: 12px;
+            text-align: center;
+            font-family: var(--font-script);
+            font-size: 1.22rem;
+            line-height: 1.3;
+            color: var(--ink-soft);
+        }
+
+        .gallery-item.empty {
+            cursor: default;
+        }
+
+        .gallery-item.empty .gallery-photo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px dashed var(--sun-300);
+            color: var(--ink-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 14px;
+        }
+
+        .gallery-item.empty .gallery-photo i {
+            font-size: 1.7rem;
+            color: var(--sun-400);
+        }
+
+        .gallery-item.empty img {
+            display: none;
+        }
+
+        .slot-hint code {
+            font-family: monospace;
+            background: var(--cream-200);
+            padding: 1px 6px;
+            border-radius: 5px;
+            color: var(--ink-soft);
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(68, 48, 42, 0.86);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 86vh;
+            border-radius: 10px;
+            border: 6px solid #fff;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 26px;
+            font-size: 1.9rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* ============================= */
+        /* LỜI CẢM ƠN                    */
+        /* ============================= */
+        .thank-you {
+            position: relative;
+            margin-top: 20px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: linear-gradient(150deg, var(--sun-300), var(--cream-100) 55%, var(--sky-200));
+            padding: 56px 26px 60px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        .thank-you .section-title {
+            color: var(--red-600);
+        }
+
+        .thank-you .section-title::after {
+            background: #fff;
+        }
+
+        .quote-mark {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 3.4rem;
+            line-height: 0.6;
+            color: var(--red-400);
+            opacity: 0.45;
+        }
+
+        .thank-you p {
+            max-width: 620px;
+            margin: 18px auto 0;
+            color: var(--ink-soft);
+            font-size: 1.03rem;
+            line-height: 1.85;
+        }
+
+        .thank-you .wish {
+            font-family: var(--font-script);
+            font-size: 1.35rem;
+            color: var(--red-500);
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .signature {
+            font-family: var(--font-script);
+            font-size: 2.4rem;
+            color: var(--red-600);
+            margin-top: 18px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 26px;
+        }
+
+        .contact-row .btn-pill.fb {
+            color: #1877f2;
+            border-color: rgba(24, 119, 242, 0.3);
+            box-shadow: 0 6px 0 rgba(24, 119, 242, 0.2);
+        }
+
+        .contact-row .btn-pill.fb:hover {
+            box-shadow: 0 9px 0 rgba(24, 119, 242, 0.2);
+        }
+
+        .btn-calendar {
+            margin-top: 26px;
+            padding: 15px 34px;
+            border: none;
+            border-radius: 999px;
+            background: var(--red-500);
+            color: var(--cream-100);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            box-shadow: 0 9px 0 var(--red-600);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-calendar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 0 var(--red-600);
+        }
+
+        .btn-calendar:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 var(--red-600);
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 34px 10px 10px;
+            color: var(--ink-muted);
+            font-size: 0.86rem;
+            letter-spacing: 0.6px;
+        }
+
+        .site-footer i {
+            color: var(--red-400);
+        }
+
+        /* ============================= */
+        /* RESPONSIVE                    */
+        /* ============================= */
+        @media (max-width: 640px) {
+            section {
+                padding: 46px 0;
+            }
+
+            .countdown-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .venue-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .venue-spot {
+                align-self: center;
+            }
+
+            .map-container {
+                height: 280px;
+            }
+
+            .timeline {
+                padding-left: 28px;
+            }
+
+            .timeline-dot {
+                left: -27px;
+            }
+
+            .thank-you {
+                border-radius: var(--radius-md);
+                padding: 44px 18px 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NỀN TRỜI CỐ ĐỊNH -->
+    <div class="sky-bg">
+        <div class="sky-layer-dusk" id="skyDusk"></div>
+        <div class="clouds" id="bgStars"></div>
+        <div class="clouds" id="bgClouds">
+            <div class="cloud-layer" id="cloudLayerFar"></div>
+            <div class="cloud-layer" id="cloudLayerMid"></div>
+            <div class="cloud-layer" id="cloudLayerNear"></div>
+        </div>
+        <div class="confetti" id="bgConfetti"></div>
+    </div>
+
+    <!-- ================= MÀN HÌNH PHONG BÌ ================= -->
+    <div id="envelope-screen">
+        <div class="clouds" id="envelopeStars"></div>
+        <div class="clouds" id="envelopeClouds"></div>
+        <div class="confetti" id="envelopeConfetti"></div>
+
+        <p class="envelope-eyebrow"><span>Có một thiệp mời dành cho bạn nè</span></p>
+        <p class="envelope-sub">Hy vọng bạn sẽ đến chung vui và lưu giữ những khoảnh khắc đáng nhớ cùng mình!</p>
+
+        <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope">
+                <div class="envelope-front"></div>
+                <div class="seal"><img src="seal-hust.png" alt="Đại học Bách Khoa Hà Nội - Lễ Tốt Nghiệp 2026"></div>
+                <div class="envelope-flap"></div>
+                <div class="card-inside">
+                    <img src="hust-wordmark.png" alt="HUST" class="envelope-wordmark">
+                    <div class="envelope-label">
+                        <div class="label-row"><span class="label-tag">From</span><span class="label-value">Nguyễn
+                                My</span></div>
+                        <div class="label-row"><span class="label-tag">To</span><span class="label-value"
+                                id="envelopeToName">you</span></div>
+                    </div>
+                    <div class="card-message" id="cardMessage">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Thân mời tham dự <br>
+                        Lễ Tốt Nghiệp
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="guest-input-container">
+            <input type="text" id="guest-name-input" placeholder="Nhập tên của bạn..." maxlength="50">
+        </div>
+        <button id="open-btn"><i class="fa-solid fa-envelope-open-text"></i> Mở Thiệp</button>
+    </div>
+
+    <!-- ================= NỘI DUNG CHÍNH ================= -->
+    <div id="main-content">
+        <div class="container">
+
+            <!-- HERO -->
+            <section class="hero">
+                <p class="hero-hello hero-reveal">Happy</p>
+                <h1 class="hero-title hero-reveal">Graduation<span class="hi">!</span></h1>
+
+                <div class="hero-reveal">
+                    <div class="poster-frame">
+                        <span class="tape tl"></span>
+                        <span class="tape tr"></span>
+                        <i class="fa-solid fa-star sticker" style="top:-26px; right:-16px; animation-delay:0.2s;"></i>
+                        <i class="fa-solid fa-seedling sticker"
+                            style="bottom:22%; left:-24px; color:var(--green-500); animation-delay:1.1s;"></i>
+                        <i class="fa-solid fa-star sticker"
+                            style="bottom:-18px; right:12%; font-size:1.1rem; animation-delay:1.7s;"></i>
+                        <img src="Chung.jpg" alt="Thiệp mời Lễ Tốt Nghiệp - Nguyễn Thị Trà My">
+                        <div class="poster-caption">26.09.2026 &middot; Quảng trường C1</div>
+                    </div>
+                </div>
+
+                <h2 class="hero-name hero-reveal">
+                    Nguyễn Thị Trà My
+                    <i class="fa-solid fa-star sticker"
+                        style="top:-22px; right:-26px; font-size:1rem; animation-delay:0.5s;"></i>
+                </h2>
+                <!-- ĐỔI NGÀNH HỌC TẠI ĐÂY -->
+                <p class="hero-major hero-reveal">Tân Cử nhân &middot; Đại học Bách khoa Hà Nội</p>
+
+                <div class="hero-badges hero-reveal">
+                    <span class="badge"><i class="fa-regular fa-calendar"></i> Thứ Bảy, 26.09.2026</span>
+                    <span class="badge">9:00 &ndash; 12:00</span>
+                    <span class="badge green">Quảng trường C1</span>
+                </div>
+
+                <a href="#greeting" class="scroll-cue hero-reveal" aria-label="Cuộn xuống"><i
+                        class="fa-solid fa-chevron-down"></i></a>
+            </section>
+
+            <!-- LỜI CHÀO -->
+            <section id="greeting">
+                <div class="greeting-card reveal">
+                        <h3>Thân mời <span id="display-guest-name" class="guest-name"></span>,</h3>
+                        <p>Thời gian trôi qua nhanh như một cái chớp mắt, vậy là chặng đường bốn năm dưới mái trường Đại
+                        học Bách khoa của mình đã đi tới trạm dừng chân cuối cùng. 
+                            </p>
+                        <p>
+                                Bách khoa trong mình không chỉ là những giảng đường thênh thang, những đêm ôn thi đến
+                        sáng hay những buổi cặm cụi chạy deadline không nghỉ mà nơi đây còn đong đầy những kỷ niệm đẹp
+                        đẽ, còn là những tháng ngày chứa đựng đủ những cảm xúc buồn vui, những tâm tư và những tình cảm
+                        quý giá. Thật hạnh phúc biết bao vì trong hành trình ấy có sự đồng hành của bạn. 
+                            </p>
+                        <p>
+                                Cảm ơn bạn vì đã luôn ở bên, sẻ chia và tiếp thêm động lực cho mình suốt chặng đường vừa
+                        qua.
+                        Nếu không có những lời động viên, những sự hỗ trợ âm thầm hay những buổi chuyện
+                        trò giải tỏa áp lực, hành trình này của mình chắc chắn sẽ không thể trọn vẹn và ý nghĩa đến thế.
+                            </p>
+                        <p>
+                                Lễ tốt nghiệp sắp tới đây là một dấu mốc quan trọng, khép lại thời sinh viên còn
+                        nhiều vô tư và mở ra một chân trời mới. Trong khoảnh khắc đặc biệt và thiêng liêng này, sự hiện
+                        diện của bạn sẽ là món quà vô giá và niềm hạnh phúc lớn lao đối với mình.
+                            </p>
+                        <p>
+                                Rất mong được đón bạn tại buổi lễ để cùng lưu lại những khoảnh khắc đáng nhớ!
+                            </p>
+                </div>
+            </section>
+
+            <!-- SAVE THE DATE -->
+            <section id="details">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">Save the date</p>
+                    <h2 class="section-title">Ngày Vui Của Mình</h2>
+                </div>
+
+                <div class="details-grid reveal">
+                    <div class="detail-item">
+                        <div class="detail-icon-wrap"><i class="fa-regular fa-calendar"></i></div>
+                        <h3>Thời gian</h3>
+                        <p><strong>Thứ Bảy, 26.09.2026</strong><br>9:00 &ndash; 12:00</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3>Địa điểm</h3>
+                        <p><strong>Quảng trường C1 &middot; Đại học Bách khoa Hà Nội</strong><br>Số 2 Trần Đại Nghĩa,
+                            Phường Bạch Mai, TP. Hà Nội</p>
+                    </div>
+                </div>
+
+                <div class="countdown-wrapper reveal" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-label">Ngày</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-label">Giờ</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="mins">00</span>
+                        <span class="countdown-label">Phút</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="secs">00</span>
+                        <span class="countdown-label">Giây</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CHƯƠNG TRÌNH (mốc giờ dự kiến - sửa lại theo lịch chính thức của trường) -->
+            <section id="program">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">Timeline</p>
+                    <h2 class="section-title">Chương Trình</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item highlight">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">7:00 &ndash; 9:00</div>
+                            <div class="timeline-text">Dự lễ tốt nghiệp tại Hội trường C2 &ndash; nhận giấy khen, kỷ
+                                niệm chương từ nhà trường</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">9:00 &ndash; 12:00</div>
+                            <div class="timeline-text">Đón tiếp khách mời và chụp ảnh lưu niệm tại Quảng trường C1
+                            </div>
+                            <span class="timeline-note"><i class="fa-solid fa-camera"></i> Hẹn bạn chúng mình tranh thủ
+                                làm kiểu hình nhé!</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">Sau 12:00</div>
+                            <div class="timeline-text"> Liên hoan thân mật cùng gia đình bạn bè &ndash; mọi người không
+                                bận thì ở lại chung vui với
+                                mình nha!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ĐỊA ĐIỂM -->
+            <section id="location">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">See you there</p>
+                    <h2 class="section-title">Đường Đến Quảng Trường C1</h2>
+                </div>
+
+                <div class="venue-card reveal">
+                    <div class="venue-head">
+                        <div>
+                            <div class="venue-name">Đại học Bách khoa Hà Nội</div>
+                            <div class="venue-address">Số 2 Trần Đại Nghĩa, Phường Bạch Mai, TP. Hà Nội</div>
+                        </div>
+                        <div class="venue-spot">QUẢNG TRƯỜNG C1</div>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps?q=Qu%E1%BA%A3ng%20tr%C6%B0%E1%BB%9Dng%20C1%20%C4%90%E1%BA%A1i%20h%E1%BB%8Dc%20B%C3%A1ch%20khoa%20H%C3%A0%20N%E1%BB%99i%2C%20S%E1%BB%91%202%20Tr%E1%BA%A7n%20%C4%90%E1%BA%A1i%20Ngh%C4%A9a%2C%20H%C3%A0%20N%E1%BB%99i&amp;z=17&amp;output=embed"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="Bản đồ đến Quảng trường C1, Đại học Bách khoa Hà Nội"></iframe>
+                    </div>
+                </div>
+
+                <div class="venue-actions reveal">
+                    <a class="btn-pill" href="https://maps.app.goo.gl/6sc6qW9oCPJXQJFx9" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-diamond-turn-right"></i> Chỉ đường
+                    </a>
+                </div>
+            </section>
+
+            <!-- KHOẢNH KHẮC -->
+            <section id="gallery">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">Memories</p>
+                    <h2 class="section-title">Khoảnh Khắc</h2>
+                </div>
+
+                <!-- Thả ảnh my1.jpg ... my6.jpg vào cùng thư mục là ảnh tự hiện ra -->
+                <div class="gallery-grid">
+                    <div class="gallery-item" tabindex="0">
+                        <div class="reveal">
+                            <div class="gallery-photo">
+                                <img src="my1.jpg" alt="Ngày đầu ở Bách khoa" loading="lazy">
+                                <i class="fa-regular fa-image"></i>
+                                <span class="slot-hint">Thêm ảnh <code>my1.jpg</code></span>
+                            </div>
+                            <div class="gallery-caption">Những chuyến tình nguyện trong màu áo xanh cùng CTES</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <div class="reveal">
+                            <div class="gallery-photo">
+                                <img src="my2.jpg" alt="Những đêm chạy deadline" loading="lazy">
+                                <i class="fa-regular fa-image"></i>
+                                <span class="slot-hint">Thêm ảnh <code>my2.jpg</code></span>
+                            </div>
+                            <div class="gallery-caption">Đại gia đình nhà Cú, yêu lắm!</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <div class="reveal">
+                            <div class="gallery-photo">
+                                <img src="my3.jpg" alt="Cũng may mắn nhận được học bổng" loading="lazy">
+                                <i class="fa-regular fa-image"></i>
+                                <span class="slot-hint">Thêm ảnh <code>my3.jpg</code></span>
+                            </div>
+                            <div class="gallery-caption">Cũng may mắn nhận được học bổng</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <div class="reveal">
+                            <div class="gallery-photo">
+                                <img src="my4.jpg" alt="Kỷ niệm cùng lớp" loading="lazy">
+                                <i class="fa-regular fa-image"></i>
+                                <span class="slot-hint">Thêm ảnh <code>my4.jpg</code></span>
+                            </div>
+                            <div class="gallery-caption">Trộm vía có kha khá giấy khen (Trên này là nhận SV5T thành phố
+                                nè)</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <div class="reveal">
+                            <div class="gallery-photo">
+                                <img src="my5.jpg" alt="Bảo vệ đồ án tốt nghiệp" loading="lazy">
+                                <i class="fa-regular fa-image"></i>
+                                <span class="slot-hint">Thêm ảnh <code>my5.jpg</code></span>
+                            </div>
+                            <div class="gallery-caption">Cuối cùng cũng bảo vệ xong đồ án tốt nghiệp rồi</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <div class="reveal">
+                            <div class="gallery-photo">
+                                <img src="my6.jpg" alt="Hẹn gặp ở Quảng trường C1" loading="lazy">
+                                <i class="fa-regular fa-image"></i>
+                                <span class="slot-hint">Thêm ảnh <code>my6.jpg</code></span>
+                            </div>
+                            <div class="gallery-caption">Hẹn gặp bạn ở Quảng trường C1 nhé!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SỔ LƯU BÚT -->
+            <section id="guestbook">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">Guestbook</p>
+                    <h2 class="section-title">Sổ Lưu Bút</h2>
+                </div>
+
+                <div class="notebook-wrap reveal">
+                    <div class="notebook" id="notebook">
+                        <div class="flipbook" id="flipbook"></div>
+                        <div class="book-gutter" aria-hidden="true"></div>
+                    </div>
+                    <div class="notebook-pagenum" id="notebookPageNum"></div>
+                    <div class="notebook-actions">
+                        <button type="button" class="btn-pill notebook-toggle" id="notebookToggle">
+                            <i class="fa-solid fa-book-open"></i> <span id="notebookToggleLabel">Mở sổ</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LỜI CẢM ƠN -->
+            <section class="thank-you">
+                <div class="confetti" id="thankyouConfetti"></div>
+                <div class="thank-you-content reveal">
+                    <div class="section-header">
+                        <p class="section-eyebrow">Thank you</p>
+                        <h2 class="section-title">Lời Cảm Ơn</h2>
+                    </div>
+                    <span class="quote-mark">&ldquo;</span>
+                    <p> Người ta hay ví thanh xuân như cơn mưa rào, dẫu bị cảm lạnh người ta vẫn muốn đắm mình trong nó
+                        thêm lần nữa. Cảm ơn bạn vì đã là một phần trong thanh xuân của mình &ndash;
+                        được gặp gỡ và chia sẻ những khoảnh khắc cùng nhau chính là một điều kỳ diệu đó. Sự có mặt của
+                        bạn trong ngày 26.09 này chính là món quà
+                        trân quý nhất mà mình nhận được.</p>
+                    <p class="wish">Your presence will make my special day so much happier<br>Thank you for being part
+                        of my journey!</p>
+                    <div class="signature">Trà My</div>
+
+                    <div class="contact-row">
+                        <a class="btn-pill" href="tel:0919812276"><i class="fa-solid fa-phone"></i> 0919 812 276</a>
+                        <a class="btn-pill fb" href="https://facebook.com/MyNTT04" target="_blank" rel="noopener"><i
+                                class="fa-brands fa-facebook"></i> Nguyễn My</a>
+                    </div>
+
+                    <button class="btn-calendar" id="addToCalendarBtn">
+                        <i class="fa-regular fa-calendar-plus"></i>
+                        Lưu vào lịch
+                    </button>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                Nguyễn Thị Trà My &middot; Lễ Tốt Nghiệp 2026 &middot; made with <i class="fa-solid fa-heart"></i>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></span>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <script>
+        // 1. Mở phong bì + lời chào theo tên khách
+        const openBtn = document.getElementById('open-btn');
+        const envelopeWrapper = document.getElementById('envelope-wrapper');
+        const envelopeScreen = document.getElementById('envelope-screen');
+        const mainContent = document.getElementById('main-content');
+        const guestInput = document.getElementById('guest-name-input');
+        const displayGuestName = document.getElementById('display-guest-name');
+        const envelopeToName = document.getElementById('envelopeToName');
+
+        // Tên khách có thể truyền qua link: my.html?guest=Ban%20Chu%20nhiem%20K67
+        const guestFromUrl = new URLSearchParams(window.location.search).get('guest');
+        if (guestFromUrl) guestInput.value = guestFromUrl;
+        if (guestFromUrl) envelopeToName.textContent = guestFromUrl;
+
+        // Nhãn "To" trên tem thư trong phong bì cập nhật theo tên khách gõ vào
+        guestInput.addEventListener('input', () => {
+            const v = guestInput.value.trim();
+            envelopeToName.textContent = v || 'you';
+        });
+
+        let opened = false;
+        let currentGuestName = '';
+        const envelopeFlapEl = envelopeWrapper.querySelector('.envelope-flap');
+        const sealEl = envelopeWrapper.querySelector('.seal');
+        const cardInsideEl = envelopeWrapper.querySelector('.card-inside');
+        const cardMessageEl = document.getElementById('cardMessage');
+        const cardStampsEl = [
+            envelopeWrapper.querySelector('.envelope-wordmark'),
+            envelopeWrapper.querySelector('.envelope-label')
+        ];
+
+        // Mở thiệp bằng 1 timeline GSAP duy nhất thay vì chuỗi setTimeout lồng nhau
+        // (nguyên nhân khiến hiệu ứng cũ bị giật/kỳ cục do thời gian không khớp animation
+        // CSS thật sự). Trình tự: dấu mờ dần -> nắp lật mở -> tờ thiệp trồi lên -> hiện chữ
+        // mời -> giữ nhịp cho khách đọc -> cả màn hình phong bì mờ dần sang trang chính.
+        function openInvitation() {
+            if (opened) return;
+            opened = true;
+
+            const name = guestInput.value.trim();
+            currentGuestName = name;
+            displayGuestName.textContent = name ? ` ${name}` : ' bạn';
+
+            envelopeWrapper.classList.add('open');
+            rock(0);
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    envelopeScreen.style.visibility = 'hidden';
+                    envelopeScreen.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    window.scrollTo(0, 0);
+                    playHeroEntrance();
+                    // #main-content ẩn (display:none) lúc trang vừa tải nên ScrollTrigger đo
+                    // chiều cao trang lúc đó rất nhỏ (chỉ màn hình phong bì). Giờ nội dung thật
+                    // đã hiện ra, phải đo lại thì các mốc cuộn (mây, trời chiều...) mới đúng.
+                    // Sổ lưu bút cũng vậy: phải vẽ lại theo kích thước thật.
+                    requestAnimationFrame(() => {
+                        ScrollTrigger.refresh();
+                        ensureNotebookBuilt();
+                        if (pageFlip) {
+                            pageFlip.update();
+                            fitVisibleNotebookPages();
+                        }
+                    });
+                }
+            });
+
+            tl.to(sealEl, { opacity: 0, scale: 0.45, duration: 0.35, ease: 'power2.in' }, 0)
+                .set(envelopeFlapEl, { transformPerspective: 900 }, 0)
+                .to(envelopeFlapEl, { rotationX: 180, duration: 0.7, ease: 'power2.inOut' }, 0.05)
+                .set(cardInsideEl, { zIndex: 8 }, 0.3)
+                .to(cardInsideEl, { yPercent: -58, scale: 1.04, duration: 0.75, ease: 'power3.out' }, 0.3)
+                .to(cardStampsEl, { opacity: 0, duration: 0.3, ease: 'power1.in' }, 0.65)
+                .to(cardMessageEl, { opacity: 1, duration: 0.5, ease: 'power1.out' }, 0.9)
+                .to({}, { duration: 0.9 })
+                .to(envelopeScreen, { opacity: 0, duration: 0.7, ease: 'power1.inOut' });
+        }
+
+        // 1b. Phong bì lắc nhẹ theo chuột (GSAP) - chỉ xoay 1 trục (rotation) bám theo
+        // vị trí ngang của con trỏ, mượt và đơn giản hơn hẳn kiểu nghiêng 3D nhiều trục.
+        const envelopeInner = envelopeWrapper.querySelector('.envelope');
+        const rock = gsap.quickTo(envelopeInner, 'rotation', { duration: 0.4, ease: 'power2.out' });
+
+        envelopeWrapper.addEventListener('mousemove', (e) => {
+            if (opened) return;
+            const rect = envelopeWrapper.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            rock(relX * 6);
+        });
+        envelopeWrapper.addEventListener('mouseleave', () => rock(0));
+
+        // Hero (ảnh + Happy Graduation...) không nằm trong vùng cuộn ban đầu nên hệ thống
+        // .reveal theo ScrollTrigger không có tác dụng - cho nó tự fade/hiện dần bằng timeline
+        // riêng ngay khi thiệp vừa mở ra, thay vì hiện thẳng luôn không hiệu ứng.
+        function playHeroEntrance() {
+            gsap.to('.hero-reveal', {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
+                ease: 'power2.out',
+                stagger: 0.12
+            });
+        }
+
+        openBtn.addEventListener('click', openInvitation);
+        envelopeWrapper.addEventListener('click', openInvitation);
+        guestInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') openInvitation();
+        });
+
+        // 2. Đếm ngược tới 9:00 ngày 26.09.2026, sau đó báo đang chờ ở quảng trường,
+        // và sau 12:00 thì báo buổi lễ đã diễn ra tốt đẹp.
+        const targetDate = new Date(2026, 8, 26, 9, 0, 0).getTime();
+        const eventEndDate = new Date(2026, 8, 26, 12, 0, 0).getTime();
+        const countdownEl = document.getElementById('countdown');
+
+        const updateCountdown = () => {
+            const now = Date.now();
+
+            if (now >= eventEndDate) {
+                countdownEl.innerHTML = '<div class="countdown-done">Buổi lễ đã diễn ra tốt đẹp, cảm ơn bạn rất nhiều!</div>';
+                clearInterval(countdownTimer);
+                return;
+            }
+
+            if (now >= targetDate) {
+                countdownEl.innerHTML = '<div class="countdown-done">Mình vẫn đang đợi bạn ở Quảng trường C1 nhé!</div>';
+                return;
+            }
+
+            const distance = targetDate - now;
+            const days = Math.floor(distance / 86400000);
+            const hours = Math.floor((distance % 86400000) / 3600000);
+            const minutes = Math.floor((distance % 3600000) / 60000);
+            const seconds = Math.floor((distance % 60000) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('mins').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('secs').innerText = String(seconds).padStart(2, '0');
+        };
+
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 3. Hiệu ứng hiện dần khi cuộn (kiểu feed: mờ dần rõ theo đúng tốc độ cuộn)
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Mũi tên "cuộn xuống" ở hero: tự cuộn mượt 1 lần khi bấm, không bật scroll-behavior
+        // toàn cục (tránh xung đột với ScrollTrigger khi khách tự cuộn tay).
+        document.querySelectorAll('a.scroll-cue[href^="#"]').forEach((link) => {
+            link.addEventListener('click', (e) => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        document.querySelectorAll('.reveal, .timeline-item').forEach((el) => {
+            gsap.fromTo(el,
+                { opacity: 0, y: 42 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 92%',
+                        end: 'top 55%',
+                        scrub: 0.5
+                    }
+                }
+            );
+        });
+
+        // 4. Lưu vào lịch (.ics) - 9:00-12:00 ngày 26/09/2026, giờ VN (UTC+7)
+        document.getElementById('addToCalendarBtn').addEventListener('click', () => {
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Graduation Invitation//EN',
+                'BEGIN:VEVENT',
+                'DTSTART:20260926T020000Z',
+                'DTEND:20260926T050000Z',
+                'SUMMARY:Lễ Tốt Nghiệp 2026 - Nguyễn Thị Trà My',
+                'LOCATION:Quảng trường C1, Đại học Bách khoa Hà Nội, Số 2 Trần Đại Nghĩa, Phường Bạch Mai, Hà Nội',
+                'DESCRIPTION:Lễ trao bằng tốt nghiệp của Nguyễn Thị Trà My. Liên hệ: 0919812276',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'le_tot_nghiep_tramy.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(link.href);
+        });
+
+        // 5. Gallery: ảnh nào chưa có thì hiện khung chờ, có rồi thì bật lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const img = item.querySelector('img');
+
+            // Mặc định coi như chưa có ảnh (hiện ô "Thêm ảnh..."), tránh việc trình duyệt
+            // vẽ ô ảnh vỡ kèm dòng alt nằm trong khung ảnh khi file chưa có.
+            // Phải dò bằng đối tượng Image() riêng: thẻ <img> trong ô trống đang bị
+            // display:none, mà ảnh loading="lazy" khi bị display:none thì Chrome không
+            // tải, nên không bao giờ có sự kiện load để gỡ trạng thái trống.
+            item.classList.add('empty');
+            const probe = new Image();
+            probe.onload = () => {
+                if (probe.naturalWidth > 0) item.classList.remove('empty');
+            };
+            probe.src = img.getAttribute('src');
+
+            const openLightbox = () => {
+                if (item.classList.contains('empty')) return;
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+            };
+            item.addEventListener('click', openLightbox);
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(); }
+            });
+        });
+
+        function closeLightbox() { lightbox.classList.remove('active'); }
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        // 6. Mây nhiều tầng trôi lững lờ + trăng sao lấp lánh + cánh hoa rơi
+        function createClouds(containerId, count, opts = {}) {
+            const container = document.getElementById(containerId);
+            if (!container) return [];
+            const {
+                minW = 110, maxW = 230,
+                opacityMin = 0.5, opacityMax = 0.8,
+                speedMin = 16, speedMax = 26,
+                ampX = 60, ampY = 16,
+                blur = 0,
+                layerClass = ''
+            } = opts;
+            const made = [];
+            for (let i = 0; i < count; i++) {
+                const c = document.createElement('span');
+                c.className = 'cloud' + (layerClass ? ' ' + layerClass : '');
+                const w = Math.random() * (maxW - minW) + minW;
+                c.style.width = `${w.toFixed(0)}px`;
+                c.style.height = `${(w * 0.26).toFixed(0)}px`;
+                if (blur) c.style.filter = `blur(${blur}px)`;
+
+                // Chia đều mây theo từng "khoang" ngang màn hình để không bị dồn về một bên
+                const slot = (i + 0.5) / count;
+                const jitter = (Math.random() - 0.5) * (90 / count);
+                const left = Math.min(96, Math.max(-6, slot * 100 + jitter));
+                c.style.left = `${left.toFixed(1)}%`;
+                c.style.top = `${(Math.random() * 82 + 4).toFixed(1)}%`;
+                c.style.opacity = (Math.random() * (opacityMax - opacityMin) + opacityMin).toFixed(2);
+                container.appendChild(c);
+                made.push(c);
+
+                if (window.gsap) {
+                    gsap.to(c, {
+                        x: gsap.utils.random(-ampX, ampX),
+                        y: gsap.utils.random(-ampY, ampY),
+                        duration: gsap.utils.random(speedMin, speedMax),
+                        repeat: -1,
+                        yoyo: true,
+                        ease: 'sine.inOut',
+                        delay: gsap.utils.random(0, 5)
+                    });
+                }
+            }
+            return made;
+        }
+
+        function createStars(containerId, count, withMoon) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            // Chia cả khung hình thành lưới ô rồi rắc 1 sao/ô (có xê dịch ngẫu nhiên trong ô)
+            // để sao rải khắp nơi thay vì túm tụm vài góc. Nền luôn ở z-index thấp nhất nên
+            // sao nằm "giữa" cũng chỉ lộ ra ở khoảng trống giữa các khối nội dung, không đè chữ.
+            const cols = 4;
+            const rows = Math.ceil(count / cols);
+            for (let i = 0; i < count; i++) {
+                const col = i % cols;
+                const row = Math.floor(i / cols);
+                const cellW = 100 / cols;
+                const cellH = 100 / rows;
+                const left = col * cellW + cellW * 0.15 + Math.random() * cellW * 0.7;
+                const top = row * cellH + cellH * 0.15 + Math.random() * cellH * 0.7;
+
+                const s = document.createElement('i');
+                s.className = 'fa-solid fa-star star-deco';
+                const size = (Math.random() * 9 + 12).toFixed(0);
+                s.style.fontSize = `${size}px`;
+                s.style.left = `${left.toFixed(1)}%`;
+                s.style.top = `${top.toFixed(1)}%`;
+                s.style.opacity = 0.95;
+                container.appendChild(s);
+
+                if (window.gsap) {
+                    gsap.to(s, {
+                        opacity: 0.2,
+                        scale: 0.55,
+                        y: '+=6',
+                        rotate: gsap.utils.random(-14, 14),
+                        duration: gsap.utils.random(0.9, 1.8),
+                        repeat: -1,
+                        yoyo: true,
+                        ease: 'sine.inOut',
+                        delay: gsap.utils.random(0, 2)
+                    });
+                }
+            }
+
+            if (withMoon) {
+                const moon = document.createElement('i');
+                moon.className = 'fa-solid fa-moon moon-deco';
+                moon.style.fontSize = '30px';
+                moon.style.left = '89%';
+                moon.style.top = '6%';
+                container.appendChild(moon);
+                if (window.gsap) {
+                    gsap.to(moon, { rotate: 8, duration: 3.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+                }
+            }
+        }
+
+        function createBubbles(containerId, count) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            for (let i = 0; i < count; i++) {
+                const b = document.createElement('span');
+                b.className = 'bubble';
+
+                const size = Math.random() * 36 + 8; // 8 - 44px, to nhỏ khác nhau
+                b.style.setProperty('--size', `${size.toFixed(0)}px`);
+                // Chia đều theo khoang ngang (như mây) để bong bóng không dồn túm tụm 1 chỗ
+                const slot = (i + 0.5) / count;
+                const jitter = (Math.random() - 0.5) * (100 / count);
+                const left = Math.min(98, Math.max(2, slot * 100 + jitter));
+                b.style.left = `${left.toFixed(1)}%`;
+                b.style.setProperty('--dur', `${(Math.random() * 12 + 16).toFixed(1)}s`);
+                b.style.setProperty('--delay', `-${(Math.random() * 24).toFixed(1)}s`);
+                // 3 mốc trôi ngang khác nhau -> đường rơi lệch tự do, không đối xứng vòng lại giữa
+                b.style.setProperty('--drift1', `${(Math.random() * 60 - 30).toFixed(0)}px`);
+                b.style.setProperty('--drift2', `${(Math.random() * 90 - 45).toFixed(0)}px`);
+                b.style.setProperty('--drift3', `${(Math.random() * 110 - 55).toFixed(0)}px`);
+                b.style.setProperty('--op', (Math.random() * 0.35 + 0.35).toFixed(2));
+                container.appendChild(b);
+            }
+        }
+
+        // Mây nền chính: 3 tầng (xa mờ nhỏ chậm -> gần rõ to nhanh) tạo chiều sâu
+        // Chuyển động tự thân của mây chủ yếu theo chiều ngang (trôi qua trôi lại), gần như không lắc dọc
+        const cloudsFar = createClouds('cloudLayerFar', 4, {
+            minW: 70, maxW: 130, opacityMin: 0.42, opacityMax: 0.58,
+            speedMin: 30, speedMax: 42, ampX: 70, ampY: 3, blur: 1.8, layerClass: 'cloud-far'
+        });
+        const cloudsMid = createClouds('cloudLayerMid', 5, {
+            minW: 130, maxW: 220, opacityMin: 0.6, opacityMax: 0.8,
+            speedMin: 18, speedMax: 26, ampX: 90, ampY: 4, blur: 0.8, layerClass: 'cloud-mid'
+        });
+        const cloudsNear = createClouds('cloudLayerNear', 3, {
+            minW: 210, maxW: 320, opacityMin: 0.82, opacityMax: 0.96,
+            speedMin: 11, speedMax: 16, ampX: 110, ampY: 5, layerClass: 'cloud-near'
+        });
+        createClouds('envelopeClouds', 5, { ampX: 70, ampY: 3, speedMin: 14, speedMax: 20 });
+        createStars('bgStars', 9, true);
+        createStars('envelopeStars', 6, false);
+        createBubbles('bgConfetti', 14);
+
+        // Trăng sao ở màn hình phong bì (chưa cuộn) luôn giữ mờ nhẹ như ban ngày
+        gsap.set('#envelopeStars', { opacity: 0.16 });
+
+        // Gộp toàn bộ hiệu ứng theo cuộn trang (mây trôi dọc theo lớp, trời + trăng sao ngả màu chiều)
+        // vào MỘT ScrollTrigger duy nhất để mượt, tránh giật do nhiều trigger trùng lặp cùng tính toán
+        gsap.set('#bgStars', { opacity: 0.18 });
+        // scrub có độ trễ (thay vì bám tuyệt đối) để dù kéo thanh cuộn nhảy vọt hay lướt
+        // chuột nhanh, màu trời vẫn được nội suy mượt qua ~0.9s thay vì đổi bụp một phát
+        const dayToDusk = gsap.timeline({
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: 'top top',
+                end: 'max',
+                scrub: 0.9
+            }
+        });
+        // Dịch cả LỚP mây (không phải từng đám mây) theo cuộn, để không đụng độ với
+        // animation trôi ngang riêng của từng đám mây bên trong lớp đó.
+        dayToDusk.to('#cloudLayerFar', { y: 45, ease: 'none' }, 0);
+        dayToDusk.to('#cloudLayerMid', { y: 90, ease: 'none' }, 0);
+        dayToDusk.to('#cloudLayerNear', { y: 150, ease: 'none' }, 0);
+        // Giữ trời xanh tươi sáng ở phần đầu lâu hơn, chỉ thực sự ngả chiều từ khoảng giữa trang trở đi
+        dayToDusk.to('#skyDusk', { opacity: 1, ease: 'power2.in' }, 0);
+        dayToDusk.to('#bgStars', { opacity: 1, ease: 'power2.in' }, 0);
+
+        createBubbles('envelopeConfetti', 16);
+        createBubbles('thankyouConfetti', 10);
+
+        // 7. Sổ lưu bút - kiểu sổ tay lật trang, lưu chung qua Google Sheet (Apps Script Web App)
+        // Sau khi triển khai Apps Script, dán link Web App (kết thúc bằng /exec) vào đây:
+        const GUESTBOOK_API_URL = 'https://script.google.com/macros/s/AKfycbzHZIyj-qCaHEswhuME3K4XFS8wER2CgdIyinlLyWg1G7bLIY7ZHalICBWrjhRLsyBJ/exec';
+        const GUESTBOOK_WRITE_PAGE = 'write';
+
+        const flipbookEl = document.getElementById('flipbook');
+        const notebookPageNum = document.getElementById('notebookPageNum');
+
+        let publicEntries = [];
+        let notebookPages = [];
+        let notebookIndex = 0;
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function guestbookApiReady() {
+            return GUESTBOOK_API_URL.startsWith('http');
+        }
+
+        // Cấu trúc như một cuốn sổ thật: bìa trước (cứng) - trang lời ngỏ - các trang
+        // lời nhắn - trang viết - bìa sau (cứng). StPageFlip chỉ coi trang cuối là bìa
+        // cứng khi nó đứng một mình trong spread, tức tổng số trang phải chẵn, nên chèn
+        // thêm một trang giấy trắng khi cần.
+        function buildNotebookPages() {
+            const pages = ['front', 'endpaper', 'intro', ...publicEntries.map((_, i) => i), GUESTBOOK_WRITE_PAGE];
+            // cộng thêm bìa sau phải ra số chẵn thì bìa sau mới đứng riêng một mình
+            if ((pages.length + 1) % 2 !== 0) pages.push('blank');
+            pages.push('back');
+            notebookPages = pages;
+        }
+
+        function isHardPage(page) {
+            return page === 'front' || page === 'back';
+        }
+
+        function notebookPageHtml(page) {
+            if (page === 'front') {
+                return `
+                    <div class="cover-edge" aria-hidden="true"></div>
+                    <div class="notebook-cover-face front">
+                        <div class="cover-label">
+                            <p class="cover-eyebrow">Guestbook</p>
+                            <h3>Sổ Lưu Bút</h3>
+                            <p class="cover-sub">Lễ Tốt Nghiệp 2026</p>
+                        </div>
+                        <p class="cover-owner">Nguyễn Thị Trà My</p>
+                        <p class="cover-hint"><i class="fa-regular fa-hand-pointer"></i> Kéo trang hoặc bấm "Mở sổ"</p>
+                    </div>
+                `;
+            }
+
+            if (page === 'back') {
+                return `
+                    <div class="cover-edge" aria-hidden="true"></div>
+                    <div class="notebook-cover-face back">
+                        <i class="fa-solid fa-heart"></i>
+                        <p>Cảm ơn bạn đã ghé sổ lưu bút của mình</p>
+                        <span class="cover-owner">Trà My &middot; 26.09.2026</span>
+                    </div>
+                `;
+            }
+
+            // Trang lót sau bìa để trống hẳn, trang lẻ sau trang viết thì có dòng kẻ
+            if (page === 'endpaper' || page === 'blank') {
+                return '<div class="notebook-blank"></div>';
+            }
+
+            if (page === 'intro') {
+                const intro = publicEntries.length
+                    ? 'Mở trang tiếp theo để đọc lưu bút từ mọi người, hoặc viết vài dòng gửi cho mình nhé.'
+                    : 'Chưa có ai viết lời nhắn cả... hãy là người đầu tiên nhé!';
+                return `
+                    <div class="notebook-cover">
+                        <h3>Lời Nhắn Cho My</h3>
+                        <p>${intro}</p>
+                    </div>
+                    <button type="button" class="notebook-cta" data-goto="write">Viết lời nhắn cho mình &rarr;</button>
+                `;
+            }
+
+            if (page === GUESTBOOK_WRITE_PAGE) {
+                return `
+                    <form class="notebook-write" id="notebookWriteForm">
+                        <p class="notebook-write-title">Viết lời nhắn cho My</p>
+                        <textarea class="notebook-write-textarea" id="guestbookMessage" maxlength="300" rows="6"
+                            placeholder="Viết vài dòng cho mình nhé..." required></textarea>
+                        <div class="notebook-signline">
+                            <span class="notebook-signline-label">Ký tên:</span>
+                            <input type="text" id="guestbookSign" class="notebook-signline-input" maxlength="30"
+                                placeholder="Tên hoặc nickname" value="${escapeHtml(currentGuestName || '')}">
+                        </div>
+                        <div class="guestbook-visibility">
+                            <label class="notebook-check">
+                                <input type="radio" name="guestbookVisibility" value="public" checked>
+                                <span class="notebook-check-box"></span>
+                                <i class="fa-solid fa-earth-asia"></i> Công khai
+                            </label>
+                            <label class="notebook-check">
+                                <input type="radio" name="guestbookVisibility" value="private">
+                                <span class="notebook-check-box"></span>
+                                <i class="fa-solid fa-lock"></i> Riêng tư
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-pill" id="guestbookSubmitBtn">
+                            <i class="fa-solid fa-feather-pointed"></i> Lưu vào sổ
+                        </button>
+                        <p class="guestbook-note" id="guestbookStatus">Lời nhắn riêng tư sẽ không hiển thị cho bất kỳ
+                            ai ngoài mình</p>
+                    </form>
+                `;
+            }
+
+            const entry = publicEntries[page];
+            return `
+                <div class="notebook-entry">
+                    <p class="notebook-entry-msg">${escapeHtml(entry.message)}</p>
+                    <p class="notebook-entry-sign">&mdash; ${escapeHtml(entry.name)}</p>
+                </div>
+                <button type="button" class="notebook-cta" data-goto="write">Viết gì đó cho mình &rarr;</button>
+            `;
+        }
+
+        // Lời nhắn dài thì tự thu nhỏ cỡ chữ để không tràn trang. line-height giữ
+        // nguyên theo px (khớp các dòng kẻ trên nền giấy) nên chữ nhỏ hơn vẫn nằm
+        // gọn gàng trên từng dòng kẻ, không bị lệch.
+        function fitNotebookEntryText(root) {
+            const entry = root.querySelector('.notebook-entry');
+            const msg = root.querySelector('.notebook-entry-msg');
+            // Trang chưa được thư viện vẽ ra thì clientHeight = 0, đo lúc đó sẽ sai.
+            // Đo theo cả khối (lời nhắn + tên ký) vì tên ký giờ nằm ngay dưới lời nhắn.
+            if (!entry || !msg || !entry.clientHeight) return;
+            const sizes = [0.88, 0.84, 0.8, 0.76, 0.72, 0.68];
+            let i = 0;
+            msg.style.fontSize = sizes[0] + 'rem';
+            while (entry.scrollHeight > entry.clientHeight + 1 && i < sizes.length - 1) {
+                i++;
+                msg.style.fontSize = sizes[i] + 'rem';
+            }
+        }
+
+        // Canh dòng kẻ trùng khít với từng dòng chữ: dịch lớp kẻ sao cho vạch kẻ rơi
+        // đúng đáy mỗi dòng chữ (chữ ngồi trên dòng kẻ như viết tay trên giấy thật).
+        const NOTEBOOK_LINE = 26;
+        // Đáy chữ chỉ cách dòng kẻ một chút, không lơ lửng cao phía trên: dịch lớp kẻ
+        // lên 6px so với đáy ô dòng để vạch kẻ nằm ngay sát chân chữ.
+        const NOTEBOOK_LINE_GAP = 6;
+        function alignNotebookLines(pageEl) {
+            const inner = pageEl.querySelector('.notebook-page-inner');
+            const anchor = pageEl.querySelector('.notebook-write-textarea, .notebook-entry-msg');
+            if (!inner || !anchor || !inner.clientHeight) return;
+            const offset = anchor.getBoundingClientRect().top - inner.getBoundingClientRect().top;
+            const posY = (((offset - NOTEBOOK_LINE_GAP) % NOTEBOOK_LINE) + NOTEBOOK_LINE) % NOTEBOOK_LINE;
+            inner.style.backgroundPosition = `0 ${posY}px`;
+        }
+
+        function fitVisibleNotebookPages() {
+            flipbookEl.querySelectorAll('.notebook-page').forEach((page) => {
+                fitNotebookEntryText(page);
+                alignNotebookLines(page);
+            });
+        }
+
+        function updateNotebookNav() {
+            const total = notebookPages.length;
+            const current = notebookPages[notebookIndex];
+            // Mở 2 trang thì hiển thị cả cặp trang đang xem
+            const spread = pageFlip && pageFlip.getOrientation() === 'landscape'
+                && notebookIndex + 1 < total && !isHardPage(current);
+
+            if (current === 'front') notebookPageNum.textContent = 'Bìa sổ';
+            else if (current === 'back') notebookPageNum.textContent = 'Bìa sau';
+            else notebookPageNum.textContent = spread
+                ? `Trang ${notebookIndex}-${notebookIndex + 1} / ${total - 2}`
+                : `Trang ${notebookIndex} / ${total - 2}`;
+        }
+
+        // Sổ đóng thì nằm giữa khung (vì thư viện vẽ bìa ở nửa phải), mở ra thì trượt
+        // về đúng vị trí thật của cuốn sổ, tức là dịch sang phải.
+        const notebookEl = document.getElementById('notebook');
+        const notebookToggle = document.getElementById('notebookToggle');
+        const notebookToggleLabel = document.getElementById('notebookToggleLabel');
+
+        // Thư viện vẽ bìa trước ở nửa phải khung, bìa sau ở nửa trái. Biết đang đóng ở
+        // bìa nào mới đặt đúng chỗ cho cả cuốn sổ lẫn bóng dưới chân sách.
+        function notebookClosedSide() {
+            if (!pageFlip) return null;
+            const page = notebookPages[pageFlip.getCurrentPageIndex()];
+            if (page === 'front') return 'front';
+            if (page === 'back') return 'back';
+            return null;
+        }
+
+        function slideNotebook(closedSide, animate = true) {
+            if (!pageFlip) return;
+            const landscape = pageFlip.getOrientation() === 'landscape';
+            let xPercent = 0;
+            if (landscape && closedSide === 'front') xPercent = -25;
+            if (landscape && closedSide === 'back') xPercent = 25;
+            if (animate) gsap.to(notebookEl, { xPercent, duration: 0.7, ease: 'power2.inOut' });
+            else gsap.set(notebookEl, { xPercent });
+        }
+
+        function syncNotebookOpenState(animate = true) {
+            if (!pageFlip) return;
+            const side = notebookClosedSide();
+            slideNotebook(side, animate);
+            const atFront = side === 'front';
+            notebookToggleLabel.textContent = atFront ? 'Mở sổ' : 'Đóng sổ';
+            notebookToggle.querySelector('i').className = atFront
+                ? 'fa-solid fa-book-open'
+                : 'fa-solid fa-book';
+        }
+
+        function openNotebook() {
+            if (!pageFlip || pageFlip.getCurrentPageIndex() !== 0) return;
+            slideNotebook(null);
+            withFlipUnlocked(() => pageFlip.flipNext());
+        }
+
+        // Đóng sổ = lật ngược từng trang cho tới bìa, các trang nối nhau liền mạch
+        // (gọi trước khi trang trước kết thúc để thành một chuỗi đóng dần), thay vì
+        // nhảy thẳng về bìa nghe "đùng" một cái.
+        let notebookClosing = false;
+        function closeNotebook() {
+            if (!pageFlip || notebookClosing) return;
+            if (pageFlip.getCurrentPageIndex() === 0) return;
+
+            notebookClosing = true;
+            const stepBack = () => {
+                if (!pageFlip || pageFlip.getCurrentPageIndex() === 0) {
+                    notebookClosing = false;
+                    return;
+                }
+                withFlipUnlocked(() => pageFlip.flipPrev());
+                setTimeout(stepBack, 420);
+            };
+            stepBack();
+        }
+
+        notebookToggle.addEventListener('click', () => {
+            if (!pageFlip || notebookClosing) return;
+            if (pageFlip.getCurrentPageIndex() === 0) openNotebook();
+            else closeNotebook();
+        });
+
+        // Bóng gáy giữa chỉ đúng khi mở 2 trang; khi đang xem bìa cứng thì sổ đóng nên
+        // giấu cả bóng gáy lẫn mép giấy dày đi.
+        function syncNotebookOrientation() {
+            const notebook = document.getElementById('notebook');
+            if (!notebook || !pageFlip) return;
+            // Lấy trang hiện tại thẳng từ thư viện, không dùng biến notebookIndex vì
+            // biến này có thể lệch nhịp với trạng thái thật sau khi dựng lại sổ.
+            const side = notebookClosedSide();
+            notebook.classList.toggle('is-landscape', pageFlip.getOrientation() === 'landscape');
+            notebook.classList.toggle('is-closed', !!side);
+            notebook.classList.toggle('is-closed-front', side === 'front');
+            notebook.classList.toggle('is-closed-back', side === 'back');
+        }
+
+        // Chỉ trang lót ngay sát bìa cứng mới để trơn, không kẻ dòng
+        const PLAIN_PAGES = ['endpaper'];
+
+        function notebookPageElement(index) {
+            const page = notebookPages[index];
+            const el = document.createElement('div');
+            el.className = 'notebook-page'
+                + (isHardPage(page) ? ' notebook-hardpage' : '')
+                + (page === 'front' ? ' cover-front' : '')
+                + (page === 'back' ? ' cover-back' : '')
+                + (PLAIN_PAGES.includes(page) ? ' notebook-page--plain' : '');
+            // Tất cả trang đều để "hard": lật cứng nguyên tấm như giấy sổ dày, thay vì
+            // uốn dẻo kiểu tờ giấy mỏng bóng như mặc định của thư viện.
+            el.dataset.density = 'hard';
+            el.innerHTML = `<div class="notebook-page-inner">${notebookPageHtml(page)}</div>`;
+            return el;
+        }
+
+        // Sổ lưu bút dùng StPageFlip - thư viện lật trang chuyên dụng: trang giấy cong
+        // góc thật khi rê chuột vào góc, kéo thả để lật, đổ bóng theo độ cong. Những
+        // thứ này không thể làm bằng CSS/GSAP thuần vì cần bẻ cong bề mặt trang.
+        let pageFlip = null;
+        let notebookPending = false;
+        function buildNotebook() {
+            // Khởi tạo khi khung còn ẩn (#main-content display:none) thì thư viện đo
+            // được kích thước 0 và vòng lặp vẽ của nó chết ngay từ khung hình đầu ->
+            // bấm lật sẽ đứng im. Chờ tới khi khung có kích thước thật rồi mới dựng.
+            if (!flipbookEl.offsetWidth) {
+                notebookPending = true;
+                return;
+            }
+            notebookPending = false;
+
+            const items = notebookPages.map((_, i) => notebookPageElement(i));
+
+            if (!pageFlip) {
+                pageFlip = new St.PageFlip(flipbookEl, {
+                    // Khổ trang: cao 480, bề ngang 380 (mở 2 trang ra 760x480)
+                    width: 380,
+                    height: 480,
+                    size: 'stretch',
+                    minWidth: 240,
+                    maxWidth: 390,
+                    minHeight: 280,
+                    maxHeight: 700,
+                    drawShadow: true,
+                    flippingTime: 620,
+                    // bóng lật nhạt thôi, để trang không bị bóng loáng
+                    maxShadowOpacity: 0.18,
+                    usePortrait: true,
+                    // Bìa trước/bìa sau là trang cứng, lật nguyên tấm như bìa sổ thật
+                    showCover: true,
+                    mobileScrollSupport: true,
+                    showPageCorners: true,
+                    // Chỉ lật được từ góc giấy, để bấm vào form bên trong trang không bị lật
+                    disableFlipByClick: true,
+                    clickEventForward: true
+                });
+                pageFlip.on('flip', (e) => {
+                    notebookIndex = e.data;
+                    syncNotebookOrientation();
+                    updateNotebookNav();
+                    syncNotebookOpenState();
+                    requestAnimationFrame(fitVisibleNotebookPages);
+                });
+                pageFlip.on('changeOrientation', () => {
+                    syncNotebookOrientation();
+                    updateNotebookNav();
+                    syncNotebookOpenState(false);
+                    requestAnimationFrame(fitVisibleNotebookPages);
+                });
+                pageFlip.on('changeState', (e) => {
+                    notebookEl.classList.toggle('is-flipping', e.data !== 'read');
+                });
+                pageFlip.loadFromHTML(items);
+
+                // Vòng lặp vẽ của thư viện gọi requestAnimationFrame nối tiếp nhau, chỉ
+                // cần một khung hình ném lỗi là chuỗi đứt vĩnh viễn và sổ không lật được
+                // nữa. Bọc lại để một khung lỗi không giết cả vòng lặp.
+                // Thư viện gọi preventDefault() cho mọi mousedown trên sách (trừ thẻ a
+                // và button) để bắt thao tác kéo trang -> ô nhập liệu không nhận được
+                // focus, khách không gõ được lời nhắn. Cho phép luôn các thẻ nhập liệu.
+                const ui = pageFlip.getUI();
+                const originalCheckTarget = ui.checkTarget.bind(ui);
+                ui.checkTarget = (target) => {
+                    const tag = target && target.tagName ? target.tagName.toLowerCase() : '';
+                    if (['input', 'textarea', 'select', 'option', 'label'].includes(tag)) return false;
+                    return originalCheckTarget(target);
+                };
+
+                const render = pageFlip.getRender();
+                const originalRender = render.render.bind(render);
+                render.render = (timer) => {
+                    try {
+                        originalRender(timer);
+                    } catch (err) {
+                        /* bỏ qua khung hình lỗi, giữ vòng lặp sống */
+                    }
+                };
+            } else {
+                pageFlip.updateFromHtml(items);
+            }
+
+            notebookIndex = pageFlip.getCurrentPageIndex();
+            syncNotebookOrientation();
+            updateNotebookNav();
+            syncNotebookOpenState(false);
+            requestAnimationFrame(fitVisibleNotebookPages);
+        }
+
+        // disableFlipByClick khoá mọi lệnh lật không xuất phát từ góc giấy - kể cả lệnh
+        // gọi từ code, nên nút điều hướng phải mở khoá trong đúng lúc gọi.
+        function withFlipUnlocked(action) {
+            if (!pageFlip) return;
+            const settings = pageFlip.getSettings();
+            const locked = settings.disableFlipByClick;
+            settings.disableFlipByClick = false;
+            action();
+            settings.disableFlipByClick = locked;
+        }
+
+        // Các trang được thư viện tạo/nhân bản động nên bắt sự kiện ở container
+        flipbookEl.addEventListener('click', (e) => {
+            const cta = e.target.closest('.notebook-cta');
+            if (!cta || !pageFlip) return;
+            const writeIndex = notebookPages.indexOf(GUESTBOOK_WRITE_PAGE);
+            if (writeIndex >= 0) withFlipUnlocked(() => pageFlip.flip(writeIndex));
+        });
+        flipbookEl.addEventListener('submit', (e) => {
+            if (e.target && e.target.id === 'notebookWriteForm') handleGuestbookSubmit(e);
+        });
+
+        let notebookResizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(notebookResizeTimer);
+            notebookResizeTimer = setTimeout(fitVisibleNotebookPages, 200);
+        });
+
+        // Sổ được dựng lúc #main-content còn display:none nên thư viện đo được kích
+        // thước bằng 0. Theo dõi kích thước thật của khung để vẽ lại cho đúng ngay khi
+        // thiệp mở ra (và mỗi lần khung đổi bề ngang).
+        let lastFlipbookWidth = 0;
+        if (window.ResizeObserver) {
+            new ResizeObserver(() => {
+                const w = flipbookEl.offsetWidth;
+                if (!w) return;
+                if (notebookPending) {
+                    buildNotebook();
+                    lastFlipbookWidth = w;
+                    return;
+                }
+                if (!pageFlip || w === lastFlipbookWidth) return;
+                lastFlipbookWidth = w;
+                pageFlip.update();
+                requestAnimationFrame(fitVisibleNotebookPages);
+            }).observe(flipbookEl);
+        }
+
+        // Chỉ trông chờ vào ResizeObserver thì nếu nó không bắn (trình duyệt cũ, khung
+        // vẫn ẩn lúc quan sát...) sổ sẽ kẹt mãi ở trạng thái chờ và không hiện ra.
+        // Thử lại định kỳ cho tới khi dựng được.
+        function ensureNotebookBuilt() {
+            if (!pageFlip && notebookPending) buildNotebook();
+            return !!pageFlip;
+        }
+
+        let notebookBuildTries = 0;
+        const notebookBuildTimer = setInterval(() => {
+            notebookBuildTries++;
+            if (ensureNotebookBuilt() || notebookBuildTries > 60) clearInterval(notebookBuildTimer);
+        }, 400);
+
+        async function handleGuestbookSubmit(e) {
+            e.preventDefault();
+            // Thư viện lật trang có nhân bản trang tạm lúc lật nên phải tìm trong đúng
+            // form vừa submit, không dùng getElementById (dễ trúng bản sao).
+            const form = e.target;
+            const messageEl = form.querySelector('#guestbookMessage');
+            const signEl = form.querySelector('#guestbookSign');
+            const statusEl = form.querySelector('#guestbookStatus');
+            const submitBtn = form.querySelector('#guestbookSubmitBtn');
+            const message = messageEl.value.trim();
+            if (!message) return;
+
+            if (!guestbookApiReady()) {
+                statusEl.textContent = 'Sổ lưu bút chưa được kết nối, chưa thể gửi lời nhắn lúc này.';
+                return;
+            }
+
+            const name = signEl.value.trim() || currentGuestName || 'Một người bạn';
+            const visibility = form.querySelector('input[name="guestbookVisibility"]:checked').value;
+
+            submitBtn.disabled = true;
+            statusEl.textContent = 'Đang gửi...';
+
+            try {
+                await fetch(GUESTBOOK_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        name,
+                        message,
+                        visibility,
+                        time: new Date().toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' })
+                    })
+                });
+
+                messageEl.value = '';
+                statusEl.textContent = visibility === 'private'
+                    ? 'Đã gửi riêng, chỉ mình mình đọc được nhé. Cảm ơn bạn!'
+                    : 'Đã lưu vào sổ, cảm ơn bạn nhiều!';
+
+                if (visibility === 'public') setTimeout(() => loadGuestbook(), 1300);
+            } catch (err) {
+                statusEl.textContent = 'Gửi thất bại, bạn thử lại sau nhé.';
+            } finally {
+                submitBtn.disabled = false;
+            }
+        }
+
+        async function loadGuestbook() {
+            if (guestbookApiReady()) {
+                try {
+                    const res = await fetch(GUESTBOOK_API_URL);
+                    publicEntries = await res.json();
+                } catch (err) {
+                    publicEntries = [];
+                }
+            }
+            // Giữ nguyên chỗ khách đang đọc khi sổ được nạp lại (ví dụ sau khi gửi lời
+            // nhắn): nếu đang ở trang viết thì vẫn về trang viết dù số trang đã đổi.
+            const wasOnWritePage = notebookPages[notebookIndex] === GUESTBOOK_WRITE_PAGE;
+            const prevIndex = notebookIndex;
+
+            buildNotebookPages();
+            buildNotebook();
+
+            const target = wasOnWritePage
+                ? notebookPages.indexOf(GUESTBOOK_WRITE_PAGE)
+                : Math.min(prevIndex, notebookPages.length - 1);
+            if (pageFlip && target >= 0 && target !== pageFlip.getCurrentPageIndex()) {
+                pageFlip.turnToPage(target);
+                // nhảy trang không animation dễ để lại khung hình cũ -> vẽ lại cho chắc
+                pageFlip.update();
+                notebookIndex = target;
+                updateNotebookNav();
+                requestAnimationFrame(fitVisibleNotebookPages);
+            }
+        }
+
+        // Dựng sổ ngay (bìa + lời ngỏ + trang viết + bìa sau) để khách không thấy
+        // khoảng trống trong lúc chờ tải lời nhắn từ Google Sheet, xong mới nạp lại đủ.
+        buildNotebookPages();
+        buildNotebook();
+        loadGuestbook();
+
+        // Ảnh tải xong có thể làm trang cao thêm -> tính lại mốc scroll cho ScrollTrigger
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+    </script>
+</body>
+
+</html>
