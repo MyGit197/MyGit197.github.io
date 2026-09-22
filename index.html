@@ -1972,40 +1972,39 @@
             hyphens: auto;
         }
 
-        /* Trái tim khép lại lời cảm ơn - đập nhè nhẹ như nhịp tim thật.
-           white-space: nowrap giữ nó luôn dính vào chữ cuối, không rớt xuống một mình. */
+        /* Trái tim khép lại lời cảm ơn - thay luôn cho dấu chấm cuối câu.
+           Đập hai nhịp rồi nghỉ như nhịp tim thật, kèm quầng sáng toả ra cho dễ thấy. */
         .heart-end {
             display: inline-block;
-            margin-left: 4px;
+            margin-left: 5px;
             color: var(--red-500);
-            font-size: 0.95em;
-            animation: heart-beat 2.4s ease-in-out infinite;
+            font-size: 1.05em;
+            transform-origin: center;
+            animation: heart-beat 1.6s ease-in-out infinite;
         }
 
         @keyframes heart-beat {
 
             0%,
-            70%,
+            60%,
             100% {
                 transform: scale(1);
+                text-shadow: none;
             }
 
-            12% {
-                transform: scale(1.22);
+            15% {
+                transform: scale(1.45);
+                text-shadow: 0 0 14px rgba(194, 38, 44, 0.45);
             }
 
-            26% {
-                transform: scale(1);
+            30% {
+                transform: scale(1.05);
+                text-shadow: 0 0 4px rgba(194, 38, 44, 0.2);
             }
 
-            38% {
-                transform: scale(1.14);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .heart-end {
-                animation: none;
+            45% {
+                transform: scale(1.3);
+                text-shadow: 0 0 10px rgba(194, 38, 44, 0.35);
             }
         }
 
@@ -2463,8 +2462,8 @@
                         thêm một lần nữa. Cảm ơn bạn vì đã là một phần trong thanh xuân của mình &ndash;
                         được gặp gỡ và sẻ chia khoảnh khắc cùng nhau là một điều kỳ diệu đó. Sự có mặt của
                         bạn trong ngày 26.09 này chính là món quà
-                        trân quý nhất mà mình nhận được. <i class="fa-solid fa-heart heart-end"
-                            aria-hidden="true"></i></p>
+                        trân quý nhất mà mình nhận được <i class="fa-solid fa-heart heart-end" aria-hidden="true"></i>
+                    </p>
                     <p class="wish">Your presence will make my special day so much happier<br>Thank you for being part
                         of my journey!</p>
                     <div class="signature">Trà My</div>
