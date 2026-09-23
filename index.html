@@ -1754,16 +1754,43 @@
         }
 
         .campus-map-link {
+            position: relative;
             display: block;
             border-radius: var(--radius-sm);
             overflow: hidden;
             box-shadow: 0 4px 14px rgba(68, 48, 42, 0.12);
         }
 
+        /* Chỉ hiện một khung cao bằng Google Maps, canh quanh ghim C1; bấm để xem cả sơ đồ */
         .campus-map-link img {
             display: block;
             width: 100%;
             height: auto;
+            max-height: 360px;
+            object-fit: cover;
+            object-position: 50% 28%;
+            transition: transform 0.4s ease;
+        }
+
+        .campus-map-link:hover img {
+            transform: scale(1.02);
+        }
+
+        .campus-map-badge {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.94);
+            color: var(--red-500);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 3px 10px rgba(68, 48, 42, 0.18);
         }
 
         .campus-map-hint {
@@ -2217,6 +2244,10 @@
                 height: 280px;
             }
 
+            .campus-map-link img {
+                max-height: 280px;
+            }
+
             .timeline {
                 padding-left: 28px;
             }
@@ -2459,9 +2490,9 @@
                         <a class="campus-map-link" href="map.jpg" target="_blank" rel="noopener">
                             <img src="map.jpg" loading="lazy"
                                 alt="Sơ đồ khuôn viên Đại học Bách khoa Hà Nội, ghim đỏ đánh dấu Quảng trường C1">
+                            <span class="campus-map-badge"><i class="fa-solid fa-expand"></i> Xem toàn bộ sơ đồ</span>
                         </a>
-                        <p class="campus-map-hint"><i class="fa-solid fa-location-dot"></i> Ghim đỏ là Quảng trường C1
-                            &middot; Bấm vào sơ đồ để xem to hơn</p>
+                        <p class="campus-map-hint"><i class="fa-solid fa-location-dot"></i> Ghim đỏ là Quảng trường C1</p>
                     </div>
                 </div>
 
