@@ -1238,6 +1238,14 @@
             max-width: 100%;
         }
 
+        /* Dòng báo lời nhắn còn tiếp ở trang sau, thay chỗ tên ký */
+        .notebook-entry-sign.notebook-entry-more {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--ink-muted);
+        }
+
         .notebook-entry-time {
             display: block;
             font-family: var(--font-sans);
@@ -3001,11 +3009,120 @@
         // cứng khi nó đứng một mình trong spread, tức tổng số trang phải chẵn, nên chèn
         // thêm một trang giấy trắng khi cần.
         function buildNotebookPages() {
-            const pages = ['front', 'endpaper', 'intro', ...publicEntries.map((_, i) => i), GUESTBOOK_WRITE_PAGE];
+            const pages = ['front', 'endpaper', 'intro', ...paginateEntries(), GUESTBOOK_WRITE_PAGE];
             // cộng thêm bìa sau phải ra số chẵn thì bìa sau mới đứng riêng một mình
             if ((pages.length + 1) % 2 !== 0) pages.push('blank');
             pages.push('back');
             notebookPages = pages;
+        }
+
+        // Lời nhắn dài quá một trang thì chảy sang trang kế tiếp như viết sổ thật: mỗi
+        // lời nhắn thành 1 hoặc nhiều trang {entry, part, text, last}, chỉ trang cuối có
+        // tên ký, các trang trước có dòng "còn tiếp". Cắt theo kích thước trang thật
+        // của thư viện nên sổ chưa dựng (chưa biết khổ trang) thì tạm để nguyên một trang.
+        const NOTEBOOK_MORE_TEXT = 'còn tiếp trang sau →';
+        const NOTEBOOK_MAX_PARTS = 20;
+
+        function notebookPageSize() {
+            if (!pageFlip) return null;
+            const rect = pageFlip.getRender().getRect();
+            if (!rect || !rect.pageWidth || !rect.height) return null;
+            return { width: rect.pageWidth, height: rect.height };
+        }
+
+        // Trang nháp ẩn cùng khổ và cùng class với trang thật để đo chữ có vừa không
+        function createEntryMeasurer(size) {
+            const el = document.createElement('div');
+            el.className = 'notebook-page';
+            el.style.cssText = 'position:fixed;left:-10000px;top:0;visibility:hidden;pointer-events:none;'
+                + `width:${size.width}px;height:${size.height}px;`;
+            el.innerHTML = `
+                <div class="notebook-page-inner">
+                    <div class="notebook-entry">
+                        <p class="notebook-entry-msg"></p>
+                        <p class="notebook-entry-sign"></p>
+                    </div>
+                    <button type="button" class="notebook-cta">Viết gì đó cho mình &rarr;</button>
+                </div>`;
+            document.body.appendChild(el);
+            return el;
+        }
+
+        function splitEntryText(entry, measurer) {
+            const box = measurer.querySelector('.notebook-entry');
+            const msgEl = measurer.querySelector('.notebook-entry-msg');
+            const signEl = measurer.querySelector('.notebook-entry-sign');
+            const fits = (text, last) => {
+                msgEl.textContent = text;
+                signEl.className = 'notebook-entry-sign' + (last ? '' : ' notebook-entry-more');
+                signEl.textContent = last ? `— ${entry.name}` : NOTEBOOK_MORE_TEXT;
+                return box.scrollHeight <= box.clientHeight + 1;
+            };
+            // Tìm vị trí cắt xa nhất trong danh sách mốc mà đoạn trước đó vẫn vừa trang
+            const bestCut = (text, cuts) => {
+                let lo = 0, hi = cuts.length - 1, best = -1;
+                while (lo <= hi) {
+                    const mid = (lo + hi) >> 1;
+                    if (fits(text.slice(0, cuts[mid]).trimEnd(), false)) { best = mid; lo = mid + 1; }
+                    else hi = mid - 1;
+                }
+                return best < 0 ? 0 : cuts[best];
+            };
+
+            const parts = [];
+            let rest = String(entry.message ?? '');
+            while (rest && parts.length < NOTEBOOK_MAX_PARTS - 1 && !fits(rest, true)) {
+                // Ưu tiên cắt ở chỗ cách chữ, chỉ cắt giữa từ khi một từ dài hơn cả trang
+                const wordCuts = [...rest.matchAll(/\s+/g)].map((m) => m.index).filter((i) => i > 0);
+                let cut = bestCut(rest, wordCuts);
+                if (!cut) cut = bestCut(rest, Array.from({ length: rest.length - 1 }, (_, i) => i + 1)) || 1;
+                parts.push(rest.slice(0, cut).trimEnd());
+                rest = rest.slice(cut).replace(/^\s+/, '');
+            }
+            parts.push(rest);
+            return parts;
+        }
+
+        function paginateEntries() {
+            const size = notebookPageSize();
+            const measurer = size && publicEntries.length ? createEntryMeasurer(size) : null;
+            const pages = publicEntries.flatMap((entry, i) => {
+                const parts = measurer ? splitEntryText(entry, measurer) : [String(entry.message ?? '')];
+                return parts.map((text, part) => ({ entry: i, part, text, last: part === parts.length - 1 }));
+            });
+            if (measurer) measurer.remove();
+            return pages;
+        }
+
+        const notebookPageKey = (page) => (typeof page === 'object' ? `${page.entry}.${page.part}` : page);
+
+        // Khổ trang đổi (xoay máy, đổi cỡ cửa sổ, sổ vừa dựng xong) thì cắt lại lời nhắn
+        // cho vừa khổ mới, giữ khách ở đúng lời nhắn đang đọc.
+        let notebookRepaginateTimer = null;
+        function scheduleNotebookRepaginate() {
+            clearTimeout(notebookRepaginateTimer);
+            notebookRepaginateTimer = setTimeout(repaginateNotebook, 250);
+        }
+
+        function repaginateNotebook() {
+            if (!pageFlip || !publicEntries.length) return;
+            const oldKeys = notebookPages.map(notebookPageKey).join('|');
+            const current = notebookPages[pageFlip.getCurrentPageIndex()];
+            buildNotebookPages();
+            if (notebookPages.map(notebookPageKey).join('|') === oldKeys) return;
+
+            pageFlip.updateFromHtml(notebookPages.map((_, i) => notebookPageElement(i)));
+            let target = typeof current === 'object'
+                ? notebookPages.findIndex((p) => typeof p === 'object' && p.entry === current.entry)
+                : notebookPages.indexOf(current);
+            if (target < 0) target = 0;
+            if (target !== pageFlip.getCurrentPageIndex()) pageFlip.turnToPage(target);
+            pageFlip.update();
+            notebookIndex = pageFlip.getCurrentPageIndex();
+            syncNotebookOrientation();
+            updateNotebookNav();
+            syncNotebookOpenState(false);
+            requestAnimationFrame(fitVisibleNotebookPages);
         }
 
         function isHardPage(page) {
@@ -3061,7 +3178,7 @@
                 return `
                     <form class="notebook-write" id="notebookWriteForm">
                         <p class="notebook-write-title">Viết lời nhắn cho My</p>
-                        <textarea class="notebook-write-textarea" id="guestbookMessage" maxlength="300" rows="6"
+                        <textarea class="notebook-write-textarea" id="guestbookMessage" maxlength="1000" rows="6"
                             placeholder="Viết vài dòng cho mình nhé..." required></textarea>
                         <div class="notebook-signline">
                             <span class="notebook-signline-label">Ký tên:</span>
@@ -3089,11 +3206,14 @@
                 `;
             }
 
-            const entry = publicEntries[page];
+            const entry = publicEntries[page.entry];
+            const footer = page.last
+                ? `<p class="notebook-entry-sign">&mdash; ${escapeHtml(entry.name)}</p>`
+                : `<p class="notebook-entry-sign notebook-entry-more">${NOTEBOOK_MORE_TEXT}</p>`;
             return `
                 <div class="notebook-entry">
-                    <p class="notebook-entry-msg">${escapeHtml(entry.message)}</p>
-                    <p class="notebook-entry-sign">&mdash; ${escapeHtml(entry.name)}</p>
+                    <p class="notebook-entry-msg">${escapeHtml(page.text)}</p>
+                    ${footer}
                 </div>
                 <button type="button" class="notebook-cta" data-goto="write">Viết gì đó cho mình &rarr;</button>
             `;
@@ -3302,6 +3422,7 @@
                     requestAnimationFrame(fitVisibleNotebookPages);
                 });
                 pageFlip.on('changeOrientation', () => {
+                    scheduleNotebookRepaginate();
                     syncNotebookOrientation();
                     updateNotebookNav();
                     syncNotebookOpenState(false);
@@ -3335,6 +3456,9 @@
                         /* bỏ qua khung hình lỗi, giữ vòng lặp sống */
                     }
                 };
+
+                // Lời nhắn nạp về trước khi sổ dựng được thì chưa cắt trang (chưa biết khổ)
+                scheduleNotebookRepaginate();
             } else {
                 pageFlip.updateFromHtml(items);
             }
@@ -3391,6 +3515,7 @@
                 lastFlipbookWidth = w;
                 pageFlip.update();
                 requestAnimationFrame(fitVisibleNotebookPages);
+                scheduleNotebookRepaginate();
             }).observe(flipbookEl);
         }
 
@@ -3465,6 +3590,8 @@
                     publicEntries = [];
                 }
             }
+            // Đo chữ để cắt trang phải đợi phông viết tay tải xong, không sẽ đo sai
+            if (document.fonts) await document.fonts.ready;
             // Giữ nguyên chỗ khách đang đọc khi sổ được nạp lại (ví dụ sau khi gửi lời
             // nhắn): nếu đang ở trang viết thì vẫn về trang viết dù số trang đã đổi.
             const wasOnWritePage = notebookPages[notebookIndex] === GUESTBOOK_WRITE_PAGE;
